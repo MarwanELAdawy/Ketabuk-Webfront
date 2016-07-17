@@ -8,6 +8,8 @@ This is a part of a greater project. [Click Here](https://github.com/Ketabuk/Sta
 ## Dependencies
 Make sure you have node.js and npm. Verify that you are running at least node v4.x.x and npm 3.x.x by running node -v and npm -v in a terminal/console window. Older versions produce errors.
 
+You have to install the [Ketabuk-Server](https://github.com/Ketabuk/Ketabuk-Server) and deploy it on apache with the domain `api.ketabuk.dev`.
+
 ## Installation
 * `git clone https://github.com/Ketabuk/Ketabuk-Webfront.git`
 * `cd Ketabuk-Webfront`

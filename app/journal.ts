@@ -4,6 +4,8 @@ import { User } from './user';
 export class Journal
 {
     id: number;
-    posts: Post[];
-    user: User;
+    name: string;
+    user_id: number;
+    created_at: Date;
+    updated_at: Date;
 }

@@ -8,7 +8,7 @@ export class JournalsService
 {
   constructor (private http: Http) {}
 
-  private journalsUrl = 'http://api.ketabuk.com/journal';  // URL to web API
+  private journalsUrl = 'https://api.ketabuk.com/journal';  // URL to web API
 
   getJournals (): Observable<Journal[]>
   {

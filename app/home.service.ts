@@ -4,7 +4,7 @@ import { Journal }           from './journal';
 import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
-export class JournalsService
+export class HomeService
 {
   constructor (private http: Http) {}
 

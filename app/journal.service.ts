@@ -4,11 +4,11 @@ import { Journal }           from './journal';
 import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
-export class HomeService
+export class JournalService
 {
   constructor (private http: Http) {}
 
-  private journalsUrl = 'https://api.ketabuk.com/journal';  // URL to web API
+  private journalsUrl = 'http://api.ketabuk.dev/journal';  // URL to web API
 
   getJournals (): Observable<Journal[]>
   {
@@ -17,10 +17,17 @@ export class HomeService
                     .catch(this.handleError);
   }
 
+  getJournal (id: number): Observable<Journal>
+  {
+    return this.http.get(this.journalsUrl + '/' + id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   private extractData(response: Response)
   {
     let body = response.json();
-    return body.journals;// || { };
+    return body.journals || body.journal || { };
   }
 
   private handleError (error: any)

@@ -3,6 +3,7 @@ import { HTTP_PROVIDERS } from '@angular/http';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { HomeComponent } from './home.component';
+import { JournalComponent } from './journal.component'
 import { LoginComponent } from './login.component';
 import { RegistrationComponent } from './registration.component';
 
@@ -13,6 +14,6 @@ import './rxjs-operators';
   templateUrl: 'app/app.component.html',
   directives: [HomeComponent, LoginComponent, RegistrationComponent, ROUTER_DIRECTIVES],
   providers: [ HTTP_PROVIDERS ],
-  precompile: [HomeComponent, LoginComponent, RegistrationComponent]
+  precompile: [HomeComponent, LoginComponent, RegistrationComponent, JournalComponent]
 })
 export class AppComponent { }

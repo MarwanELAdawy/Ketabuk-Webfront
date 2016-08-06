@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HomeService } from './home.service';
+import { JournalService } from './journal.service';
 import { Journal } from './journal';
 
 @Component({
     selector: 'home',
     templateUrl: 'app/home.component.html',
-    providers: [HomeService]
+    providers: [JournalService]
 })
 export class HomeComponent implements OnInit
 {
     journals: Journal[];
     errorMessage: string;
 
-    constructor(private homeService: HomeService) {}
+    constructor(private journalService: JournalService) {}
 
     ngOnInit() { this.getJournals(); }
 
     getJournals()
     {
-      this.homeService.getJournals()
+      this.journalService.getJournals()
                           .subscribe(
                           journals => this.journals = journals,
                           error =>  this.errorMessage = <any>error);

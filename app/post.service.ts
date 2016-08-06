@@ -8,7 +8,7 @@ export class PostService
 {
   constructor (private http: Http) {}
 
-  private postsUrl = 'http://api.ketabuk.dev/journal';  // URL to web API
+  private postsUrl = 'https://api.ketabuk.com/journal';  // URL to web API
 
   getPosts(id: number): Observable<Post[]>
   {

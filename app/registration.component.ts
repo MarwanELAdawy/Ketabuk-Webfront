@@ -16,6 +16,7 @@ export class RegistrationComponent
     constructor(){
         this.user = new User;
         this.journalModified = false;
+        this.journalName = '';
     }
 
     setJournalModified($event)
@@ -25,7 +26,7 @@ export class RegistrationComponent
 
     setJournalName($event)
     {
-        if (!this.journalModified)
+        //if (!this.journalModified && this.user.name)
             this.journalName = "كراسة " + this.user.name;
     }
 }

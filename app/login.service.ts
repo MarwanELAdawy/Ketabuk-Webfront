@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Journal }           from './journal';
 import { Observable }     from 'rxjs/Observable';
 import { Config } from './config';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Injectable()
 export class LoginService
@@ -32,8 +33,8 @@ export class LoginService
   {
     let body = response.json();
     let headers = response.headers;
-
-    return headers.get('Authorization');
+    Cookie.set('JWT', headers.get('Authorization'));
+    return body;
   }
 
   private handleError (error: any)

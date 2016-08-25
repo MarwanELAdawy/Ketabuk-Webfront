@@ -2,13 +2,17 @@ import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Journal }           from './journal';
 import { Observable }     from 'rxjs/Observable';
+import { Config } from './config';
 
 @Injectable()
 export class JournalService
 {
-  constructor (private http: Http) {}
 
-  private journalsUrl = 'https://api.ketabuk.com/journal';  // URL to web API
+  constructor (private http: Http)
+  {
+  }
+
+  private journalsUrl = Config.API_URL + 'journal';  // URL to web API
 
   getJournals (): Observable<Journal[]>
   {

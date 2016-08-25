@@ -2,13 +2,14 @@ import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Post }           from './post';
 import { Observable }     from 'rxjs/Observable';
+import { Config }         from './config';
 
 @Injectable()
 export class PostService
 {
   constructor (private http: Http) {}
 
-  private postsUrl = 'https://api.ketabuk.com/journal';  // URL to web API
+  private postsUrl = Config.API_URL + 'journal';  // URL to web API
 
   getPosts(id: number): Observable<Post[]>
   {

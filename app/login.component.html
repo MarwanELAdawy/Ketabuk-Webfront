@@ -5,12 +5,12 @@
                 <div class="panel-heading">الدخول</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="/login">
-
+                    
                         <div class="form-group">
                             <label for="email" class="col-md-4 control-label">الEmail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email">
+                                <input id="email" [(ngModel)]="email" type="email" class="form-control" name="email">
                             </div>
                         </div>
 
@@ -18,9 +18,11 @@
                             <label for="password" class="col-md-4 control-label">كلمة السر</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
+                                <input id="password" [(ngModel)]="password" type="password" class="form-control" name="password">
                             </div>
                         </div>
+                        <label for="password" class="col-md-4 control-label">{{ response }}</label>
+                        {{ body }}
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -34,7 +36,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" (click)="login()">
                                     <i class="fa fa-btn fa-sign-in"></i> ادخل
                                 </button>
 

@@ -3,26 +3,20 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Journal }           from './journal';
 import { Observable }     from 'rxjs/Observable';
 import { Config } from './config';
+import { SuperAuth } from './super-auth';
 
 @Injectable()
 export class JournalService
 {
-  private headers : Headers;
   private jwt: string;
-  constructor (private http: Http)
-  {
-    // this.headers = new Headers();
-    // //this.headers.append('Content-Type', 'application/json');
-    this.jwt = localStorage.getItem('id_token');
-    // if(jwt)
-    //   this.headers.append('Authorization', 'Bearer ' + jwt);
-  }
+  constructor (private http: SuperAuth)
+  {}
 
   private journalsUrl = Config.API_URL + 'journal';  // URL to web API
 
   getJournals (): Observable<Journal[]>
   {
-    return this.http.get(this.journalsUrl + '?token=' + this.jwt)//, { headers: this.headers })
+    return this.http.get(this.journalsUrl)//, { headers: this.headers })
                     .map(this.extractData)
                     .catch(this.handleError);
   }

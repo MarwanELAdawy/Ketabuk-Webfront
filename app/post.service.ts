@@ -3,11 +3,12 @@ import { Http, Response } from '@angular/http';
 import { Post }           from './post';
 import { Observable }     from 'rxjs/Observable';
 import { Config }         from './config';
+import { SuperAuth }      from './super-auth';
 
 @Injectable()
 export class PostService
 {
-  constructor (private http: Http) {}
+  constructor (private http: SuperAuth) {}
 
   private postsUrl = Config.API_URL + 'journal';  // URL to web API
 

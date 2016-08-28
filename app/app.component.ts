@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 import { HomeComponent } from './home.component';
 import { JournalComponent } from './journal.component'

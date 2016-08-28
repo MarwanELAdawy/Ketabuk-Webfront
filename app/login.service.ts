@@ -1,14 +1,13 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+
 import { Journal }           from './journal';
 import { Observable }     from 'rxjs/Observable';
 import { Config } from './config';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Injectable()
 export class LoginService
 {
-
   constructor (private http: Http)
   {
   }
@@ -33,7 +32,8 @@ export class LoginService
   {
     let body = response.json();
     let headers = response.headers;
-    Cookie.set('JWT', headers.get('Authorization'));
+    //Cookie.set('JWT', headers.get('Authorization'));
+    localStorage.setItem('id_token', headers.get('Authorization').split(" ", 2)[1]);
     return body;
   }
 

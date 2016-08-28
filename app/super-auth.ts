@@ -13,12 +13,18 @@ export class SuperAuth {
 
   get(url)
   {
+    this.jwt = localStorage.getItem('id_token');
+    if(this.jwt == null)
+        return this.http.get(url);
     return this.http.get(url + '?token=' + this.jwt);
+        
   }
 
   post(url, data)
   {
-    return this.http.post(url + '?token=' + this.jwt, data, {
-    });
+    this.jwt = localStorage.getItem('id_token');
+    if(this.jwt == null)
+        return this.http.post(url, data, {});
+    return this.http.post(url + '?token=' + this.jwt, data, {});
   }
 }

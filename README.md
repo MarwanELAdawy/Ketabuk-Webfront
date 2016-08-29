@@ -13,6 +13,7 @@ You have to install the [Ketabuk-Server](https://github.com/Ketabuk/Ketabuk-Serv
 ## Installation
 * `git clone https://github.com/Ketabuk/Ketabuk-Webfront.git`
 * `cd Ketabuk-Webfront`
+* `cp app/config.ts.example app/config.ts`
 * `npm install`
 
 ## Build and run the app

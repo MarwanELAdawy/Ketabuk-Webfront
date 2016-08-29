@@ -39,6 +39,9 @@ export class SuperAuth {
 
   public static logout()
   {
-      localStorage.removeItem(Config.JWT_FIELD_NAME);
+      let fields = Config.ALL_FIELDS;
+      fields.forEach(element => {
+          localStorage.removeItem(element);
+      });
   }
 }

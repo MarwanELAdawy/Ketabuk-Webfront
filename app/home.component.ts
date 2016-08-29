@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RuntimeCompiler} from '@angular/compiler';
 
 import { JournalService } from './journal.service';
 import { Journal } from './journal';
@@ -14,12 +15,16 @@ export class HomeComponent implements OnInit
     journals: Journal[];
     errorMessage: string;
 
-    constructor(private journalService: JournalService) {}
+    constructor(private journalService: JournalService, private _runtimeCompiler: RuntimeCompiler) {}
+    
 
     ngOnInit()
     {
         if (SuperAuth.isLoggedIn())
             this.getJournals();
+
+        //TODO: comment out in production
+        this._runtimeCompiler.clearCache();
     }
 
     getJournals()

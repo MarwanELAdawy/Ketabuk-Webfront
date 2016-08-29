@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { RuntimeCompiler} from '@angular/compiler';
 
 import { HomeComponent } from './home.component';
 import { JournalComponent } from './journal.component'
@@ -27,11 +26,7 @@ export class AppComponent implements OnInit
   private journal : Journal;
   private user : User;
   
-  //TODO: comment out in production
-  constructor(private _runtimeCompiler: RuntimeCompiler)
-  {
-    this._runtimeCompiler.clearCache();
-  }
+
 
   ngOnInit()
   {

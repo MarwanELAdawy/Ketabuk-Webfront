@@ -2,6 +2,10 @@ export class Config
 {
     public static get API_URL(): string { return 'https://api.ketabuk.com/'; }
     public static get JWT_FIELD_NAME(): string { return 'kt_id_token'; }
-    public static get JOURNAL_FIELD(): string { return 'kt_journal'; }
     public static get USER_FIELD(): string { return 'kt_user'; }
+    
+    public static get ALL_FIELDS(): string[]
+    {
+        return [this.JWT_FIELD_NAME, this.USER_FIELD];
+    }
 }

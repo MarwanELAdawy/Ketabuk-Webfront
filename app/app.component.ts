@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HTTP_PROVIDERS } from '@angular/http';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { HomeComponent } from './home.component';
@@ -17,7 +16,7 @@ import './rxjs-operators';
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
   directives: [HomeComponent, LoginComponent, RegistrationComponent, ROUTER_DIRECTIVES],
-  providers: [ HTTP_PROVIDERS, SuperAuth ],
+  providers: [ SuperAuth ],
   precompile: [HomeComponent, LoginComponent, RegistrationComponent, JournalComponent]
 })
 export class AppComponent implements OnInit

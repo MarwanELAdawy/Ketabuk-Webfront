@@ -4,6 +4,7 @@ import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { User } from './user';
 import { Config } from './config';
+import { SuperAuth } from './super-auth';
 
 @Component(
     {
@@ -25,13 +26,7 @@ export class LoginComponent
     {
         this.loginService.login([this.email, this.password])
                             .subscribe(
-                            response => this.onLogin(response),
+                            response => SuperAuth.login(response),
                             error =>  this.errorMessage = <any>error);
-    }
-
-    onLogin(response)
-    {
-        this.user = response;
-        localStorage.setItem( Config.USER_FIELD, JSON.stringify(this.user) );
     }
 }

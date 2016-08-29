@@ -15,6 +15,9 @@
             كـتـابُك
             </a>
         </div>
+        <ul *ngIf="m_isLoggedIn" class="nav navbar-nav">
+            <li><a href="journal/{{user.journal.id}}">كراستى</a></li>
+        </ul>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Right Side Of Navbar -->
@@ -23,8 +26,17 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav navbar-left">
                 <!-- Authentication Links -->
-                    <li><a [routerLink]="['/login']">ادخل</a></li>
-                    <li><a [routerLink]="['/register']">سجل</a></li>
+                    <li *ngIf="!m_isLoggedIn"><a [routerLink]="['/login']">ادخل</a></li>
+                    <li *ngIf="!m_isLoggedIn"><a [routerLink]="['/register']">سجل</a></li>
+                    <li *ngIf="m_isLoggedIn" class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ user?.name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> اخرج</a></li>
+                        </ul>
+                    </li>
             </ul>
         </div>
     </div>

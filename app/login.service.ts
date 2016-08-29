@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Journal }           from './journal';
 import { Observable }     from 'rxjs/Observable';
 import { Config } from './config';
+import { User } from './user';
 
 @Injectable()
 export class LoginService
@@ -14,7 +15,7 @@ export class LoginService
 
   private loginUrl = Config.API_URL + 'login';  // URL to web API
 
-  login (p_credentials: string[]): Observable<string>
+  login (p_credentials: string[]): Observable<User>
   {
     let credentials = new Credentials;
     credentials.email = p_credentials[0];
@@ -33,8 +34,8 @@ export class LoginService
     let body = response.json();
     let headers = response.headers;
     //Cookie.set('JWT', headers.get('Authorization'));
-    localStorage.setItem('id_token', headers.get('Authorization').split(" ", 2)[1]);
-    return body;
+    localStorage.setItem(Config.JWT_FIELD_NAME, headers.get('Authorization').split(" ", 2)[1]);
+    return body.user;
   }
 
   private handleError (error: any)

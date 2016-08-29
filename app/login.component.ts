@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { LoginService } from './login.service';
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { User } from './user';
+import { Config } from './config';
 
 @Component(
     {
@@ -15,7 +17,7 @@ export class LoginComponent
     @Input() email: string;
     @Input() password: string;
 
-    response: string;
+    user: User;
     errorMessage: any;
 
     constructor(private loginService: LoginService, private http: Http) {}
@@ -23,7 +25,13 @@ export class LoginComponent
     {
         this.loginService.login([this.email, this.password])
                             .subscribe(
-                          response => this.response = response,
-                          error =>  this.errorMessage = <any>error);
+                            response => this.onLogin(response),
+                            error =>  this.errorMessage = <any>error);
+    }
+
+    onLogin(response)
+    {
+        this.user = response;
+        localStorage.setItem( Config.USER_FIELD, JSON.stringify(this.user) );
     }
 }

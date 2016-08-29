@@ -28,6 +28,11 @@ export class JournalService
                     .catch(this.handleError);
   }
 
+  getMyJournal()
+  {
+    
+  }
+
   private extractData(response: Response)
   {
     let body = response.json();

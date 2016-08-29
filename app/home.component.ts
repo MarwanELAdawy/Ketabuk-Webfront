@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { JournalService } from './journal.service';
 import { Journal } from './journal';
+import { SuperAuth } from './super-auth';
 
 @Component({
     selector: 'home',
@@ -15,7 +16,11 @@ export class HomeComponent implements OnInit
 
     constructor(private journalService: JournalService) {}
 
-    ngOnInit() { this.getJournals(); }
+    ngOnInit()
+    {
+        if (SuperAuth.isLoggedIn())
+            this.getJournals();
+    }
 
     getJournals()
     {
@@ -23,5 +28,10 @@ export class HomeComponent implements OnInit
                           .subscribe(
                           journals => this.journals = journals,
                           error =>  this.errorMessage = <any>error);
+    }
+
+    getMyJournal()
+    {
+        this.journalService.getMyJournal();
     }
 }

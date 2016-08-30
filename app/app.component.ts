@@ -17,7 +17,7 @@ import './rxjs-operators';
   templateUrl: 'app/app.component.html',
   directives: [HomeComponent, LoginComponent, RegistrationComponent, ROUTER_DIRECTIVES],
   providers: [ SuperAuth ],
-  precompile: [HomeComponent, LoginComponent, RegistrationComponent, JournalComponent]
+  //precompile: [HomeComponent, LoginComponent, RegistrationComponent, JournalComponent]
 })
 export class AppComponent implements OnInit
 {

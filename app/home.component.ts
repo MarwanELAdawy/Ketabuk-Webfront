@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RuntimeCompiler} from '@angular/compiler';
+//import { RuntimeCompiler} from '@angular/compiler';
 
 import { JournalService } from './journal.service';
 import { Journal } from './journal';
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit
     journals: Journal[];
     errorMessage: string;
 
-    constructor(private journalService: JournalService, private _runtimeCompiler: RuntimeCompiler) {}
+    constructor(private journalService: JournalService){}//, private _runtimeCompiler: RuntimeCompiler) {}
     
 
     ngOnInit()
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit
             this.getJournals();
 
         //TODO: comment out in production
-        this._runtimeCompiler.clearCache();
+        // this._runtimeCompiler.clearCache();
     }
 
     getJournals()

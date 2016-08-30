@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { HomeComponent } from './home.component';
 import { JournalComponent } from './journal.component'
@@ -15,7 +14,7 @@ import './rxjs-operators';
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
-  directives: [HomeComponent, LoginComponent, RegistrationComponent, ROUTER_DIRECTIVES],
+  directives: [HomeComponent, LoginComponent, RegistrationComponent],
   providers: [ SuperAuth ],
   //precompile: [HomeComponent, LoginComponent, RegistrationComponent, JournalComponent]
 })

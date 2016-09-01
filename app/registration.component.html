@@ -4,9 +4,17 @@
             <div class="panel panel-default">
                 <div class="panel-heading">التسجيل</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="">
+                    <form (ngSubmit)="register()" class="form-horizontal" role="form">
 
-                        <div class="form-group">
+                        <div *ngIf="journalModified" class="form-group">
+                            <label for="name" class="col-md-4 control-label">اسم مستعار</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" [(ngModel)]="user.name">
+                            </div>
+                        </div>
+
+                        <div *ngIf="!journalModified" class="form-group">
                             <label for="name" class="col-md-4 control-label">اسم مستعار</label>
 
                             <div class="col-md-6">

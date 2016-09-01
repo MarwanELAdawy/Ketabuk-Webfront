@@ -29,4 +29,9 @@ export class RegistrationComponent
         //if (!this.journalModified && this.user.name)
             this.journalName = "كراسة " + this.user.name;
     }
+
+    register()
+    {
+        
+    }
 }

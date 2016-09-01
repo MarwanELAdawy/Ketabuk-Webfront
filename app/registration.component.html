@@ -4,13 +4,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">التسجيل</div>
                 <div class="panel-body">
-                    <form (ngSubmit)="register()" class="form-horizontal" role="form">
+                    <form (ngSubmit)="register()" class="form-horizontal" role="form" #registrationForm="ngForm">
 
                         <div *ngIf="journalModified" class="form-group">
                             <label for="name" class="col-md-4 control-label">اسم مستعار</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" [(ngModel)]="user.name">
+                                <input id="name" required type="text" class="form-control" name="name" [(ngModel)]="user.name">
                             </div>
                         </div>
 
@@ -18,7 +18,7 @@
                             <label for="name" class="col-md-4 control-label">اسم مستعار</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" [(ngModel)]="user.name" (ngModelChange)="setJournalName($event)">
+                                <input id="name" required type="text" class="form-control" name="name" [(ngModel)]="user.name" (ngModelChange)="setJournalName($event)">
                             </div>
                         </div>
 
@@ -26,7 +26,7 @@
                             <label for="name" class="col-md-4 control-label">اسم الكراسة</label>
 
                             <div class="col-md-6">
-                                <input id="journal" type="text" class="form-control" name="journal" value="{{journalName}}" (input)="setJournalModified($event)">
+                                <input id="journal" required type="text" class="form-control" name="journal" value="{{journalName}}" (input)="setJournalModified($event)">
                             </div>
                         </div>
 
@@ -34,30 +34,32 @@
                             <label for="email" class="col-md-4 control-label">الEmail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email">
+                                <input id="email" required type="email" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">كلمة السر</label>
+                            <label for="password"  class="col-md-4 control-label">كلمة السر</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
+                                <input id="password" required (keyup)="comparePasswords()" type="password" class="form-control" name="password" [(ngModel)]="password">
 
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">كلمة السر تاني</label>
+                            <label for="password-confirm"  class="col-md-4 control-label">كلمة السر تاني</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                <input id="password-confirm" required (keyup)="comparePasswords()" type="password" class="form-control" name="password_confirmation" [(ngModel)]="password2" #pass="ngModel">
+                                <div *ngIf="!valid && pass.valid" class="alert alert-danger">كلمة السر دي لازم تبقي زي اللي فوق</div>
+                                <div *ngIf="valid && pass.valid" class="alert alert-success">تمام</div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button [disabled]="!registrationForm.form.valid || !valid" type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i> سجل
                                 </button>
                             </div>

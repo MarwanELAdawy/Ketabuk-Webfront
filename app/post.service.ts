@@ -4,6 +4,7 @@ import { Post }           from './post';
 import { Observable }     from 'rxjs/Observable';
 import { Config }         from './config';
 import { SuperAuth }      from './super-auth';
+import { SuperService }      from './super-service';
 
 @Injectable()
 export class PostService
@@ -21,6 +22,7 @@ export class PostService
 
   private extractData(response: Response)
   {
+    SuperService.extractData(response);
     let body = response.json();
     return body.posts || { };
   }

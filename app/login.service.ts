@@ -5,6 +5,7 @@ import { Journal }           from './journal';
 import { Observable }     from 'rxjs/Observable';
 import { Config } from './config';
 import { User } from './user';
+import { SuperService } from './super-service';
 
 @Injectable()
 export class LoginService
@@ -31,10 +32,8 @@ export class LoginService
 
   private extractData(response: Response)
   {
+    SuperService.extractData(response);
     let body = response.json();
-    let headers = response.headers;
-    //Cookie.set('JWT', headers.get('Authorization'));
-    localStorage.setItem(Config.JWT_FIELD_NAME, headers.get('Authorization').split(" ", 2)[1]);
     return body.user;
   }
 

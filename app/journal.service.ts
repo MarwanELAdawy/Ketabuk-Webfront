@@ -4,6 +4,7 @@ import { Journal }           from './journal';
 import { Observable }     from 'rxjs/Observable';
 import { Config } from './config';
 import { SuperAuth } from './super-auth';
+import { SuperService } from './super-service';
 
 @Injectable()
 export class JournalService
@@ -35,6 +36,7 @@ export class JournalService
 
   private extractData(response: Response)
   {
+    SuperService.extractData(response);
     let body = response.json();
     return body.journals || body.journal || { };
   }

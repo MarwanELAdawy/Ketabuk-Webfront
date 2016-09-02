@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { PostService } from './post.service';
@@ -15,15 +15,17 @@ declare var tinymce: any;
 })
 export class JournalComponent implements OnInit
 {
-    posts: Post[];
+    @Input() posts: Post[];
     journal: Journal;
     errorMessage: string;
     sub: any;
     journal_id: number;
+    newPostText: string;
 
     constructor(private postService: PostService,
                 private journalService: JournalService,
-                private route: ActivatedRoute ) {}
+                private route: ActivatedRoute,
+                public zone: NgZone ) {}
 
     ngOnInit()
     {
@@ -40,6 +42,15 @@ export class JournalComponent implements OnInit
             directionality: "rtl",
             content_css : "/app/assets/css/main.css",
             body_class: 'bigger',
+            // This writes the content of the post to newPostText in real time.
+            setup: (ed) => {
+            ed.on('keyup change', (ed, l) => {
+                this.zone.run(()=> {
+                this.newPostText = tinymce.activeEditor.getContent();
+                });
+            });
+
+            }
         });
     }
 
@@ -57,5 +68,18 @@ export class JournalComponent implements OnInit
                           .subscribe(
                           posts => this.posts = posts,
                           error =>  this.errorMessage = <any>error);
+    }
+
+    submitPost()
+    {
+        this.postService.submitPost(this.journal_id, this.newPostText)
+                        .subscribe(
+                        response => this.updatePosts(response),
+                        error =>  this.errorMessage = <any>error);
+    }
+
+    updatePosts(post: Post)
+    {
+        this.posts.unshift(post);
     }
 }

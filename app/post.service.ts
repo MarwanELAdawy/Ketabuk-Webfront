@@ -1,5 +1,5 @@
 import { Injectable }     from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response, Headers, RequestOptions } from '@angular/http';
 import { Post }           from './post';
 import { Observable }     from 'rxjs/Observable';
 import { Config }         from './config';
@@ -20,11 +20,22 @@ export class PostService
                     .catch(this.handleError);
   }
 
+  submitPost(id: number, data: string): Observable<Post>
+  {
+    let body = JSON.stringify({ data });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let url = this.postsUrl + '/' + id + '/post';
+    return this.http.post(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   private extractData(response: Response)
   {
     SuperService.extractData(response);
     let body = response.json();
-    return body.posts || { };
+    return body.posts || body.post || { };
   }
 
   private handleError (error: any)

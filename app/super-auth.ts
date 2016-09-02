@@ -37,11 +37,11 @@ export class SuperAuth implements CanActivate
         
   }
 
-  post(url, data)
+  post(url, data, options = {})
   {
     if(SuperAuth.isLoggedIn())
-        return this.http.post(url + '?token=' + SuperAuth.getJWT(), data, {});
-    return this.http.post(url, data, {});
+        return this.http.post(url + '?token=' + SuperAuth.getJWT(), data, options);
+    return this.http.post(url, data, options);
   }
 
   public static isLoggedIn() : boolean

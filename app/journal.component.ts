@@ -82,6 +82,7 @@ export class JournalComponent implements OnInit
                         response => this.updatePosts(response),
                         error =>  this.errorMessage = <any>error);
         // my dirty workaround to reset the editor content until a proper feature is implemented in angular2
+        this.initTinyMCE();
         tinymce.activeEditor.setContent('');
     }
 

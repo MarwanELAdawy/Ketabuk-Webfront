@@ -6,6 +6,8 @@ import { JournalService } from './journal.service';
 import { Post } from './post';
 import { Journal } from './journal';
 
+declare var tinymce: any;
+
 @Component({
     selector: 'my-journal',
     templateUrl: 'app/journal.component.html',
@@ -30,6 +32,15 @@ export class JournalComponent implements OnInit
         });
         this.getJournal(this.journal_id);
         this.getPosts(this.journal_id);
+        tinymce.init(
+        {
+            selector: "#post-content",
+            plugins: "directionality",
+            menubar: false,
+            directionality: "rtl",
+            content_css : "/app/assets/css/main.css",
+            body_class: 'bigger',
+        });
     }
 
     getJournal(id: number)

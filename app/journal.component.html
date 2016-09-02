@@ -6,6 +6,30 @@
                 </h2>
                 </div>
                 <div class="panel-body">
+                    <!-- New Post Form -->
+                    <form class="form-horizontal">
+                        <!-- Post Content -->
+                        <div class="form-group">
+
+                            <div style="width:96%; margin: 2% " class="col-sm-6">
+                                <textarea [htmlEditor]="" name="content" id="post-content" class="form-control" rows="20" required="required">
+                                </textarea>
+
+                            </div>
+
+
+                        </div>
+                        <!-- Post Button -->
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-4">
+                                <button type="submit" id="postButton" class="btn btn-default">
+                                    <i class="fa fa-plus" aria-hidden="true"></i><span> اكتب</span>
+ 
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                     <hr />
                     <div class="posts">
                         <div *ngFor="let post of posts" class="post panel panel-default panel-body">

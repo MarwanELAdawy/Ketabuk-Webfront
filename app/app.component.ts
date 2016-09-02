@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { JournalComponent } from './journal.component'
 import { LoginComponent } from './login.component';
 import { RegistrationComponent } from './registration.component';
+import { EditorDirective } from './tinyMCE.directive';
 import { SuperAuth } from './super-auth';
 import { Config } from './config';
 import { Journal } from './journal';
@@ -14,7 +15,7 @@ import './rxjs-operators';
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
-  directives: [HomeComponent, LoginComponent, RegistrationComponent],
+  directives: [HomeComponent, LoginComponent, RegistrationComponent, EditorDirective],
   providers: [ SuperAuth ],
   //precompile: [HomeComponent, LoginComponent, RegistrationComponent, JournalComponent]
 })

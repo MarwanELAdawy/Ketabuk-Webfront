@@ -30,8 +30,7 @@ export class RegistrationService
 
   private extractData(response: Response)
   {
-    // console.log('extracting data');
-    // SuperService.extractData(response);
+    SuperService.extractData(response);
     let body = response.json();
     return body.user;
   }

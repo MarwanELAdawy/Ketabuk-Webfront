@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { User } from './user';
 import { Journal } from './journal';
 import { RegistrationService, RegistrationForm } from './registration.service'
+import { SuperAuth } from './super-auth';
 
 @Component(
     {
@@ -57,9 +58,10 @@ export class RegistrationComponent// implements OnInit
         {
             this.registerationService.register(this.form)
                 .subscribe(
-                response => this.response = response,
+                response => SuperAuth.login(response),
                 error =>  this.errorMessage = <any>error);
-            return
+            
+            
         }
         this.submitted = true;
     }

@@ -40,7 +40,7 @@
                                 <small style="padding-right:20px;">يكتب:</small>
                               </p>
                             </div>
-                            <div class="content col-lg-9 text-justify bigger">
+                            <div [innerHTML]="post.content" class="content col-lg-9 text-justify bigger">
                                 {{ post.content }}
                             </div>
                             <div class="edit text-center col-lg-1" style="padding-top:25px;">

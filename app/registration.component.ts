@@ -1,26 +1,39 @@
 import { Component, Input } from '@angular/core';
 import { User } from './user';
+import { Journal } from './journal';
+import { RegistrationService, RegistrationForm } from './registration.service'
 
 @Component(
     {
         selector: 'my-login',
-        templateUrl: 'app/registration.component.html'
+        templateUrl: 'app/registration.component.html',
+        providers: [RegistrationService]
     }
 )
-export class RegistrationComponent
+export class RegistrationComponent// implements OnInit
 {
-    @Input() user : User;
+    @Input() form : RegistrationForm;
     @Input() journalModified: boolean;
     @Input() journalName: string;
     @Input() password: string;
-    @Input() password2: string;
     @Input() valid: boolean = false;
+    response: string;
+    errorMessage: any;
+    submitted: boolean = false;
 
-    constructor(){
-        this.user = new User;
+    constructor(private registerationService: RegistrationService)
+    {
+        this.form = new RegistrationForm;
+        this.form.user = new User;
+        this.form.user.journal = new Journal;
         this.journalModified = false;
-        this.journalName = '';
+        this.form.user.journal.name = '';
     }
+
+    // ngOnInit()
+    // {
+        
+    // }
 
     setJournalModified($event)
     {
@@ -29,18 +42,25 @@ export class RegistrationComponent
 
     setJournalName($event)
     {
-        //if (!this.journalModified && this.user.name)
-            this.journalName = "كراسة " + this.user.name;
+        this.form.user.journal.name = "كراسة " + this.form.user.name;
     }
 
     comparePasswords()
     {
-        if (this.password == this.password2) { this.valid = true; return }
+        if (this.form.password == this.password) { this.valid = true; return }
         this.valid = false;
     }
 
     register()
     {
-        
+        if(this.valid)
+        {
+            this.registerationService.register(this.form)
+                .subscribe(
+                response => this.response = response,
+                error =>  this.errorMessage = <any>error);
+            return
+        }
+        this.submitted = true;
     }
 }

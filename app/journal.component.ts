@@ -15,7 +15,7 @@ declare var tinymce: any;
 })
 export class JournalComponent implements OnInit
 {
-    @Input() posts: Post[];
+    posts: Post[];
     journal: Journal;
     errorMessage: string;
     sub: any;
@@ -87,6 +87,7 @@ export class JournalComponent implements OnInit
 
     updatePosts(post: Post)
     {
+        // adds the new post to the beginning of the array
         this.posts.unshift(post);
     }
 }

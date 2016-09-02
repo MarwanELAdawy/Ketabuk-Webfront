@@ -34,6 +34,11 @@ export class JournalComponent implements OnInit
         });
         this.getJournal(this.journal_id);
         this.getPosts(this.journal_id);
+        this.initTinyMCE();
+    }
+
+    initTinyMCE()
+    {
         tinymce.init(
         {
             selector: "#post-content",
@@ -76,6 +81,8 @@ export class JournalComponent implements OnInit
                         .subscribe(
                         response => this.updatePosts(response),
                         error =>  this.errorMessage = <any>error);
+        // my dirty workaround to reset the editor content until a proper feature is implemented in angular2
+        tinymce.activeEditor.setContent('');
     }
 
     updatePosts(post: Post)

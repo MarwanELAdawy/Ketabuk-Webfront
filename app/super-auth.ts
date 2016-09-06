@@ -4,6 +4,7 @@ import { Config } from './config';
 import { CanActivate, Router,
          ActivatedRouteSnapshot,
          RouterStateSnapshot }    from '@angular/router';
+import { JwtHelper } from './angular2-jwt';
 
 @Injectable()
 export class SuperAuth implements CanActivate
@@ -47,8 +48,17 @@ export class SuperAuth implements CanActivate
   public static isLoggedIn() : boolean
   {
     let jwt = localStorage.getItem(Config.JWT_FIELD_NAME);
+
     if(jwt == null)
         return false;
+
+    let helper = new JwtHelper;
+    if (helper.isTokenExpired(jwt))
+    {
+        SuperAuth.logout();
+        return false;
+    }
+    
     return true;
   }
 

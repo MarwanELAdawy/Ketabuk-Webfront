@@ -38,6 +38,7 @@ export class JournalComponent implements OnInit
         this.getJournal(this.journal_id);
         this.getPosts(this.journal_id);
         this.initTinyMCE();
+        this.user = SuperAuth.getAuthenticatedUser();
     }
 
     initTinyMCE()
@@ -97,8 +98,6 @@ export class JournalComponent implements OnInit
 
     userMayEdit(user: User)
     {
-        this.user = SuperAuth.getAuthenticatedUser();
-
         if(this.user.email == user.email)
             return true;
         return false;

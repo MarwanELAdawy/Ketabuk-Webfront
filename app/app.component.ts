@@ -15,7 +15,7 @@ import './rxjs-operators';
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
-  directives: [HomeComponent, LoginComponent, RegistrationComponent, EditorDirective],
+  //directives: [HomeComponent, LoginComponent, RegistrationComponent, EditorDirective],
   providers: [ SuperAuth ],
   //precompile: [HomeComponent, LoginComponent, RegistrationComponent, JournalComponent]
 })

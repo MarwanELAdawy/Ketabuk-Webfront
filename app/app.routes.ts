@@ -1,11 +1,12 @@
-import { provideRouter, RouterConfig }  from '@angular/router';
+import { ModuleWithProviders }  from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { JournalComponent } from './journal.component';
 import { LoginComponent } from './login.component';
 import { RegistrationComponent } from './registration.component';
 import { SuperAuth } from './super-auth';
 
-const routes: RouterConfig = [
+const routes: Routes = [
   {
     path: '',
     component: HomeComponent
@@ -26,7 +27,4 @@ const routes: RouterConfig = [
   }
 ];
 
-export const appRouterProviders = [
-  provideRouter(routes)
-];
-
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

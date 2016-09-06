@@ -14,17 +14,14 @@ export class HomeComponent implements OnInit
 {
     journals: Journal[];
     errorMessage: string;
-
+    isLoggedIn: boolean;
     constructor(private journalService: JournalService){}//, private _runtimeCompiler: RuntimeCompiler) {}
     
 
     ngOnInit()
     {
-        if (SuperAuth.isLoggedIn())
+        if (this.isLoggedIn = SuperAuth.isLoggedIn())
             this.getJournals();
-
-        //TODO: comment out in production
-        // this._runtimeCompiler.clearCache();
     }
 
     getJournals()

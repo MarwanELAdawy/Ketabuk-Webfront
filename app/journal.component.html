@@ -52,7 +52,7 @@
                                   </button>
                                   <ul class="dropdown-menu">
                                     <!-- only author of post can edit -->
-                                        <li><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> تعديل</a></li>
+                                        <li *ngIf="userMayEdit(post.user)"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> تعديل</a></li>
                                     <!-- You should by either post author or journal owner to be able to delete a post -->
                                         <form action="#" method="POST" class="form-horizontal">
                                         <button type="submit" id="deleteButton" class="aslink"><i class="fa fa-trash" aria-hidden="true"></i> حذف</button>

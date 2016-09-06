@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export class Journal
 {
     id: number;
@@ -5,4 +7,5 @@ export class Journal
     user_id: number;
     created_at: Date;
     updated_at: Date;
+    user: User;
 }

@@ -5,6 +5,8 @@ import { PostService } from './post.service';
 import { JournalService } from './journal.service';
 import { Post } from './post';
 import { Journal } from './journal';
+import { User } from './user';
+import { SuperAuth } from './super-auth';
 
 declare var tinymce: any;
 
@@ -21,6 +23,7 @@ export class JournalComponent implements OnInit
     sub: any;
     journal_id: number;
     newPostText: string;
+    user: User;
 
     constructor(private postService: PostService,
                 private journalService: JournalService,
@@ -90,5 +93,14 @@ export class JournalComponent implements OnInit
     {
         // adds the new post to the beginning of the array
         this.posts.unshift(post);
+    }
+
+    userMayEdit(user: User)
+    {
+        this.user = SuperAuth.getAuthenticatedUser();
+
+        if(this.user.email == user.email)
+            return true;
+        return false;
     }
 }

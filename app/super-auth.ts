@@ -76,4 +76,12 @@ export class SuperAuth implements CanActivate
       localStorage.setItem( Config.USER_FIELD, JSON.stringify(response) );
       location.href = '/';
   }
+
+  public static getAuthenticatedUser()
+  {
+      let user = JSON.parse( localStorage.getItem(Config.USER_FIELD) );
+      if(user == null)
+        return null
+      return user;
+  }
 }

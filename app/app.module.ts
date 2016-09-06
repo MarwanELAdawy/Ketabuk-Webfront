@@ -1,4 +1,4 @@
-import { NgModule }       from '@angular/core';
+import { NgModule, enableProdMode }       from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
 import { HttpModule } from '@angular/http';
@@ -13,6 +13,10 @@ import { JournalComponent } from './journal.component';
 import { LoginComponent } from './login.component';
 import { RegistrationComponent } from './registration.component';
 import { EditorDirective } from './tinyMCE.directive';
+import { Config } from './config';
+
+if(Config.IN_PRODUCTION)
+    enableProdMode();
 
 @NgModule({
     declarations: [

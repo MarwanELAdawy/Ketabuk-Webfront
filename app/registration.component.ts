@@ -43,7 +43,7 @@ export class RegistrationComponent// implements OnInit
 
     setJournalName($event)
     {
-        this.form.user.journal.name = "كراسة " + this.form.user.name;
+        this.form.user.journal.name = "كـتـاب " + this.form.user.name;
     }
 
     comparePasswords()

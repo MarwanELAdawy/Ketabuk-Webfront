@@ -1,44 +1,38 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Journal }           from './journal';
+
+import { Journal }           from '../models/journal';
 import { Observable }     from 'rxjs/Observable';
-import { Config } from './config';
-import { SuperAuth } from './super-auth';
-import { SuperService } from './super-service';
+import { Config } from '../config';
+import { User } from '../models/user';
+import { SuperService } from '../supers/super-service';
 
 @Injectable()
-export class JournalService
+export class RegistrationService
 {
-  private jwt: string;
-  constructor (private http: SuperAuth)
-  {}
-
-  private journalsUrl = Config.API_URL + 'journal';  // URL to web API
-
-  getJournals (): Observable<Journal[]>
+  constructor (private http: Http)
   {
-    return this.http.get(this.journalsUrl)//, { headers: this.headers })
-                    .map(this.extractData)
-                    .catch(this.handleError);
   }
 
-  getJournal (id: number): Observable<Journal>
+  private registrationUrl = Config.API_URL + 'register';  // URL to web API
+
+  register (registrationForm: RegistrationForm): Observable<string>
   {
-    return this.http.get(this.journalsUrl + '/' + id)
+    let body = JSON.stringify({ registrationForm });
+    console.log(body);
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.registrationUrl, body, options)
                     .map(this.extractData)
                     .catch(this.handleError);
-  }
-
-  getMyJournal()
-  {
-    
   }
 
   private extractData(response: Response)
   {
     SuperService.extractData(response);
     let body = response.json();
-    return body.journals || body.journal || { };
+    return body.user;
   }
 
   private handleError (error: any)
@@ -50,5 +44,10 @@ export class JournalService
     console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
   }
+}
 
+export class RegistrationForm
+{
+    user : User;
+    password : string;
 }

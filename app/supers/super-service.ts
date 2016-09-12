@@ -1,5 +1,5 @@
 import { Response } from '@angular/http';
-import { Config } from './config';
+import { Config } from '../config';
 
 export class SuperService
 {

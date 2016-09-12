@@ -1,18 +1,18 @@
 import { Component, OnInit, NgZone, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { PostService } from './post.service';
-import { JournalService } from './journal.service';
-import { Post } from './post';
-import { Journal } from './journal';
-import { User } from './user';
-import { SuperAuth } from './super-auth';
+import { PostService } from '../services/post.service';
+import { JournalService } from '../services/journal.service';
+import { Post } from '../models/post';
+import { Journal } from '../models/journal';
+import { User } from '../models/user';
+import { SuperAuth } from '../supers/super-auth';
 
 declare var tinymce: any;
 
 @Component({
     selector: 'my-journal',
-    templateUrl: 'app/journal.component.html',
+    templateUrl: 'app/templates/journal.component.html',
     providers: [PostService, JournalService]
 })
 export class JournalComponent implements OnInit

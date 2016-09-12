@@ -1,11 +1,11 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-import { Journal }           from './journal';
+import { Journal } from '../models/journal';
+import { User } from '../models/user';
 import { Observable }     from 'rxjs/Observable';
-import { Config } from './config';
-import { User } from './user';
-import { SuperService } from './super-service';
+import { Config } from '../config';
+import { SuperService } from '../supers/super-service';
 
 @Injectable()
 export class LoginService

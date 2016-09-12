@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { User } from './user';
-import { Journal } from './journal';
-import { RegistrationService, RegistrationForm } from './registration.service'
-import { SuperAuth } from './super-auth';
+import { User } from '../models/user';
+import { Journal } from '../models/journal';
+import { RegistrationService, RegistrationForm } from '../services/registration.service'
+import { SuperAuth } from '../supers/super-auth';
 
 @Component(
     {
         selector: 'my-login',
-        templateUrl: 'app/registration.component.html',
+        templateUrl: 'app/templates/registration.component.html',
         providers: [RegistrationService]
     }
 )

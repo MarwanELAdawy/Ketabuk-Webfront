@@ -1,10 +1,10 @@
 import { Injectable }     from '@angular/core';
 import { Response, Headers, RequestOptions } from '@angular/http';
-import { Post }           from './post';
+import { Post }           from '../models/post';
 import { Observable }     from 'rxjs/Observable';
-import { Config }         from './config';
-import { SuperAuth }      from './super-auth';
-import { SuperService }      from './super-service';
+import { Config }         from '../config';
+import { SuperAuth }      from '../supers/super-auth';
+import { SuperService }      from '../supers/super-service';
 
 @Injectable()
 export class PostService

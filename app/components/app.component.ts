@@ -4,16 +4,16 @@ import { HomeComponent } from './home.component';
 import { JournalComponent } from './journal.component'
 import { LoginComponent } from './login.component';
 import { RegistrationComponent } from './registration.component';
-import { SuperAuth } from './super-auth';
-import { Config } from './config';
-import { Journal } from './journal';
-import { User } from './user';
+import { SuperAuth } from '../supers/super-auth';
+import { Config } from '../config';
+import { Journal } from '../models/journal';
+import { User } from '../models/user';
 
-import './rxjs-operators';
+import '../rxjs-operators';
 
 @Component({
   selector: 'my-app',
-  templateUrl: 'app/app.component.html',
+  templateUrl: 'app/templates/app.component.html',
   providers: [ SuperAuth ],
 })
 export class AppComponent implements OnInit

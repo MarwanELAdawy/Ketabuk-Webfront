@@ -1,10 +1,10 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
-import { JournalComponent } from './journal.component';
-import { LoginComponent } from './login.component';
-import { RegistrationComponent } from './registration.component';
-import { SuperAuth } from './super-auth';
+import { HomeComponent } from './components/home.component';
+import { JournalComponent } from './components/journal.component';
+import { LoginComponent } from './components/login.component';
+import { RegistrationComponent } from './components/registration.component';
+import { SuperAuth } from './supers/super-auth';
 
 const routes: Routes = [
   {

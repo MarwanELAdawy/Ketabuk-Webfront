@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 //import { RuntimeCompiler} from '@angular/compiler';
 
-import { JournalService } from './journal.service';
-import { Journal } from './journal';
-import { SuperAuth } from './super-auth';
+import { JournalService } from '../services/journal.service';
+import { Journal } from '../models/journal';
+import { SuperAuth } from '../supers/super-auth';
 
 @Component({
     selector: 'home',
-    templateUrl: 'app/home.component.html',
+    templateUrl: 'app/templates/home.component.html',
     providers: [JournalService]
 })
 export class HomeComponent implements OnInit

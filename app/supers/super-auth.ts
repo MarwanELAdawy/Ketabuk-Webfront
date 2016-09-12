@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import { Http } from '@angular/http';
-import { Config } from './config';
+import { Config } from '../config';
 import { CanActivate, Router,
          ActivatedRouteSnapshot,
          RouterStateSnapshot }    from '@angular/router';
-import { JwtHelper } from './angular2-jwt';
+import { JwtHelper } from '../angular2-jwt';
 
 @Injectable()
 export class SuperAuth implements CanActivate

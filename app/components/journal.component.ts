@@ -98,7 +98,7 @@ export class JournalComponent implements OnInit
 
     userMayEdit(user: User)
     {
-        if(this.user.email == user.email)
+        if(this.user.id == user.id)
             return true;
         return false;
     }

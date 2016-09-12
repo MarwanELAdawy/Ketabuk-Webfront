@@ -4,3 +4,4 @@
 **/*.js.map
 /.vscode
 /app/config.ts
+/npm-debug.log

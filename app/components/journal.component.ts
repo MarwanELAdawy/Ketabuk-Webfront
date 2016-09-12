@@ -102,4 +102,15 @@ export class JournalComponent implements OnInit
             return true;
         return false;
     }
+
+    deletePost(id)
+    {
+        this.postService.deletePost(this.journal_id, id)
+                        .subscribe(
+                            // deletes the post by id returned from server
+                            response => this.posts = this.posts.filter(function(el) {
+                                return el.id !== response;
+                            })
+                        );
+    }
 }

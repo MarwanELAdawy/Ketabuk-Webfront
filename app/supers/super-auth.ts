@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Config } from '../config';
 import { CanActivate, Router,
          ActivatedRouteSnapshot,
@@ -33,16 +33,33 @@ export class SuperAuth implements CanActivate
   get(url)
   {
     if(SuperAuth.isLoggedIn())
-        return this.http.get(url + '?token=' + SuperAuth.getJWT());
+        return this.http.get(this.attachToken(url));
     return this.http.get(url);
-        
+  }
+
+  delete(url)
+  {
+      if(!SuperAuth.isLoggedIn())
+        return;
+
+    let data = {_method: "DELETE"};
+    let body = JSON.stringify({ data });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    
+    return this.http.post(this.attachToken(url), data, options);
   }
 
   post(url, data, options = {})
   {
     if(SuperAuth.isLoggedIn())
-        return this.http.post(url + '?token=' + SuperAuth.getJWT(), data, options);
+        return this.http.post(this.attachToken(url), data, options);
     return this.http.post(url, data, options);
+  }
+
+  private attachToken(url) : string
+  {
+      return url + '?token=' + SuperAuth.getJWT();
   }
 
   public static isLoggedIn() : boolean

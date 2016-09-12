@@ -13,20 +13,27 @@ export class PostService
 
   private postsUrl = Config.API_URL + 'journal';  // URL to web API
 
-  getPosts(id: number): Observable<Post[]>
+  getPosts(journal_id: number): Observable<Post[]>
   {
-    return this.http.get(this.postsUrl + '/' + id + '/post')
+    return this.http.get(this.postsUrl + '/' + journal_id + '/post')
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
-  submitPost(id: number, data: string): Observable<Post>
+  submitPost(journal_id: number, data: string): Observable<Post>
   {
     let body = JSON.stringify({ data });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    let url = this.postsUrl + '/' + id + '/post';
+    let url = this.postsUrl + '/' + journal_id + '/post';
     return this.http.post(url, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  deletePost(journal_id, post_id)
+  {
+    return this.http.delete(this.postsUrl + '/' + journal_id + '/post/' + post_id)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -35,7 +42,7 @@ export class PostService
   {
     SuperService.extractData(response);
     let body = response.json();
-    return body.posts || body.post || { };
+    return body.posts || body.post || body.post_id || { };
   }
 
   private handleError (error: any)

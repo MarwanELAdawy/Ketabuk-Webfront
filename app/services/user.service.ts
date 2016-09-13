@@ -1,6 +1,5 @@
 import { Injectable }     from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Journal }           from '../models/journal';
 import { Observable }     from 'rxjs/Observable';
 import { Config } from '../config';
 import { SuperAuth } from '../supers/super-auth';
@@ -13,18 +12,20 @@ export class UserService
   constructor (private http: SuperAuth)
   {}
 
-  private journalsUrl = Config.API_URL + 'user';  // URL to web API
+  private userUrl = Config.API_URL + 'user';  // URL to web API
 
-  changeUserName(id)
+  changeUserName(value: string)
   {
-      
+      return this.http.put(this.userUrl, value)
+                    .map(this.extractData)
+                    .catch(this.handleError);
   }
 
   private extractData(response: Response)
   {
     SuperService.extractData(response);
     let body = response.json();
-    return body.journals || body.journal || { };
+    return body.username || { };
   }
 
   private handleError (error: any)

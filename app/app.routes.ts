@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home.component';
 import { JournalComponent } from './components/journal.component';
 import { LoginComponent } from './components/login.component';
+import { SettingsComponent } from './components/settings.component';
 import { RegistrationComponent } from './components/registration.component';
 import { SuperAuth } from './supers/super-auth';
 
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'journal/:id',
     component: JournalComponent
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent
   }
 ];
 

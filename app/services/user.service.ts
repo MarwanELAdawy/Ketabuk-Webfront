@@ -7,40 +7,24 @@ import { SuperAuth } from '../supers/super-auth';
 import { SuperService } from '../supers/super-service';
 
 @Injectable()
-export class JournalService
+export class UserService
 {
   private jwt: string;
   constructor (private http: SuperAuth)
   {}
 
-  private journalsUrl = Config.API_URL + 'journal';  // URL to web API
+  private journalsUrl = Config.API_URL + 'user';  // URL to web API
 
-  getJournals (): Observable<Journal[]>
+  changeUserName(id)
   {
-    return this.http.get(this.journalsUrl)//, { headers: this.headers })
-                    .map(this.extractData)
-                    .catch(this.handleError);
-  }
-
-  getJournal (id: number): Observable<Journal>
-  {
-    return this.http.get(this.journalsUrl + '/' + id)
-                    .map(this.extractData)
-                    .catch(this.handleError);
-  }
-
-  changeJournalName(id: number, value: string): Observable<number>
-  {
-    return this.http.put(this.journalsUrl + '/' + id, value)
-                    .map(this.extractData)
-                    .catch(this.handleError);
+      
   }
 
   private extractData(response: Response)
   {
     SuperService.extractData(response);
     let body = response.json();
-    return body.journals || body.journal || body.journal_name || { };
+    return body.journals || body.journal || { };
   }
 
   private handleError (error: any)

@@ -5,6 +5,7 @@ import { CanActivate, Router,
          ActivatedRouteSnapshot,
          RouterStateSnapshot }    from '@angular/router';
 import { JwtHelper } from '../angular2-jwt';
+import { User } from '../models/user';
 
 @Injectable()
 export class SuperAuth implements CanActivate
@@ -35,6 +36,17 @@ export class SuperAuth implements CanActivate
     if(SuperAuth.isLoggedIn())
         return this.http.get(this.attachToken(url));
     return this.http.get(url);
+  }
+
+  put(url, value)
+  {
+      if(!SuperAuth.isLoggedIn())
+        return;
+      let data = {_method: "PUT", data: value};
+      let body = JSON.stringify({ data });
+      let headers = new Headers({ 'Content-Type': 'application/json' });
+      let options = new RequestOptions({ headers: headers });
+      return this.http.post(this.attachToken(url), data, options);
   }
 
   delete(url)
@@ -100,5 +112,10 @@ export class SuperAuth implements CanActivate
       if(user == null)
         return null
       return user;
+  }
+
+  public static setAuthenticatedUser(user: User)
+  {
+      localStorage.setItem(Config.USER_FIELD, JSON.stringify(user));
   }
 }

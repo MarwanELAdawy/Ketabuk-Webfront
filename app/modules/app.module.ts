@@ -12,6 +12,7 @@ import { HomeComponent } from '../components/home.component';
 import { JournalComponent } from '../components/journal.component';
 import { LoginComponent } from '../components/login.component';
 import { RegistrationComponent } from '../components/registration.component';
+import { SettingsComponent } from '../components/settings.component';
 import { EditorDirective } from '../directives/tinyMCE.directive';
 import { Config } from '../config';
 
@@ -25,6 +26,7 @@ if(Config.IN_PRODUCTION)
                     JournalComponent,
                     LoginComponent,
                     RegistrationComponent,
+                    SettingsComponent,
                     EditorDirective
                   ],
     providers: [

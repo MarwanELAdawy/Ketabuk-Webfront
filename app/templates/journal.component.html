@@ -2,8 +2,10 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading"><h2><i class="fa fa-book" aria-hidden="true"></i>{{ journal?.name }}
-                </h2>
+                <div class="panel-heading">
+                    <h2>
+                        <i class="fa fa-book" aria-hidden="true"></i>{{ journal?.name }}
+                    </h2>
                 </div>
                 <div class="panel-body">
                     <!-- New Post Form -->
@@ -54,7 +56,7 @@
                                     <!-- only author of post can edit -->
                                         <li *ngIf="userMayEdit(post.user)"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> تعديل</a></li>
                                     <!-- You should by either post author or journal owner to be able to delete a post -->
-                                        <form *ngIf="userMayEdit(post.user) || (user.email == journal.user.email)" (ngSubmit)="deletePost(post.id)" class="form-horizontal">
+                                        <form *ngIf="userMayEdit(post.user) || (user.id == journal.user.id)" (ngSubmit)="deletePost(post.id)" class="form-horizontal">
                                         <button type="submit" id="deleteButton" class="aslink"><i class="fa fa-trash" aria-hidden="true"></i> حذف</button>
                                         </form>
 

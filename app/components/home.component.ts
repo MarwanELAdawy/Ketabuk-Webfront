@@ -31,9 +31,4 @@ export class HomeComponent implements OnInit
                           journals => this.journals = journals,
                           error =>  this.errorMessage = <any>error);
     }
-
-    getMyJournal()
-    {
-        this.journalService.getMyJournal();
-    }
 }

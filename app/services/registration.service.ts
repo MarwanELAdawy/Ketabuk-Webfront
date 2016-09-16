@@ -19,6 +19,7 @@ export class RegistrationService
   register (registrationForm: RegistrationForm): Observable<string>
   {
     let body = JSON.stringify({ registrationForm });
+    //TODO: remove at production
     console.log(body);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });

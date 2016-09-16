@@ -10,24 +10,31 @@
                             <label for="name" class="col-md-4 control-label">اسم مستعار</label>
 
                             <div class="col-md-6">
-                                <input id="name" required type="text" class="form-control" name="name" [(ngModel)]="form.user.name">
+                                <input id="name" required type="text" class="form-control" name="name" [(ngModel)]="form.user.name" #name1="ngModel">
                             </div>
+                            <img *ngIf="name1?.valid" height="24" width="24" src="/app/assets/validation/green.png">
+                            <img *ngIf="!name1?.valid" height="24" width="24" src="/app/assets/validation/grey.png">
                         </div>
 
                         <div *ngIf="!journalModified" class="form-group">
                             <label for="name" class="col-md-4 control-label">اسم مستعار</label>
 
                             <div class="col-md-6">
-                                <input id="name" required type="text" class="form-control" name="name" [(ngModel)]="form.user.name" (ngModelChange)="setJournalName($event)">
+                                <input id="name" required type="text" class="form-control" name="name" [(ngModel)]="form.user.name" (ngModelChange)="setJournalName($event)" #name2="ngModel">
                             </div>
+                            <img *ngIf="name2?.valid" height="24" width="24" src="/app/assets/validation/green.png">
+                            <img *ngIf="!name2?.valid" height="24" width="24" src="/app/assets/validation/grey.png">
+                            
                         </div>
 
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label">اسم الكـتـاب</label>
 
                             <div class="col-md-6">
-                                <input id="journal" required type="text" class="form-control" name="journal" value="{{form.user.journal.name}}" (input)="setJournalModified($event)">
+                                <input id="journal" required type="text" class="form-control" name="journal" [(ngModel)]="form.user.journal.name" (input)="setJournalModified($event)" #journalName="ngModel">
                             </div>
+                            <img *ngIf="journalName?.valid" height="24" width="24" src="/app/assets/validation/green.png">
+                            <img *ngIf="!journalName?.valid" height="24" width="24" src="/app/assets/validation/grey.png">
                         </div>
 
                         <div class="form-group">
@@ -36,25 +43,52 @@
                             <div class="col-md-6">
                                 <input id="email" required type="email" class="form-control" name="email" [(ngModel)]="form.user.email" #email="ngModel">
                             </div>
+                            <img *ngIf="email?.valid" height="24" width="24" src="/app/assets/validation/green.png">
+                            <img *ngIf="!email?.valid" height="24" width="24" src="/app/assets/validation/grey.png">
                         </div>
 
                         <div class="form-group">
                             <label for="password"  class="col-md-4 control-label">كلمة السر</label>
 
                             <div class="col-md-6">
-                                <input id="password" required (keyup)="comparePasswords()" type="password" class="form-control" name="password" [(ngModel)]="form.password">
+                                <input id="password" required minlength="8" (keyup)="validatePassword()" type="password" class="form-control" name="password" [(ngModel)]="form.password" #pass1="ngModel">
+                                <div *ngIf="!valid && submitted" class="alert alert-danger">مطلوب مجموعتين من ثلاث مجاميع: حروف، أرقام ورموز. أو اجعل كلمة السر ١٣ حرف أو أكثر. 
+                                    <a href='#'>لماذا نصعب الأمور؟</a>
+                                </div>
+                                <div *ngIf="valid && submitted" class="alert alert-success">تمام</div>
+                                <div *ngIf="pass1.dirty">
+                                    <div class="col-md-6">
+                                    <h4>كلمة السر تـحوي</h4>
+                                    <ul>
+                                        <li><i *ngIf="passwordHasCharacters" class="fa fa-check" aria-hidden="true"></i>حروف</li>
+                                        <li><i *ngIf="passwordHasNumbers" class="fa fa-check" aria-hidden="true"></i>أرقام</li>
+                                        <li><i *ngIf="passwordHasSymbols" class="fa fa-check" aria-hidden="true"></i>رموز</li>
+                                    </ul>
+                                    </div>
+                                    <div *ngIf="!valid && submitted" class="col-md-2">
+                                        <img align="left" height="114" width="79" src="/app/assets/sayedwsayeda/sayeda.png">
+                                    </div>
+                                    <div *ngIf="valid && submitted" class="col-md-2">
+                                        <img align="left" height="114" width="79" src="/app/assets/sayedwsayeda/sayedaHappy.png">
+                                    </div>
+                                </div>
 
-                            </div>
+                        </div>
+                        <img *ngIf="pass1?.valid" height="24" width="24" src="/app/assets/validation/green.png">
+                        <img *ngIf="!pass1?.valid" height="24" width="24" src="/app/assets/validation/grey.png">
+    
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm"  class="col-md-4 control-label">كلمة السر تاني</label>
+                            <label for="password-confirm"  class="col-md-4 control-label">كلمة السر مرة أخري</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" required (keyup)="comparePasswords()" type="password" class="form-control" name="password_confirmation" [(ngModel)]="password" #pass="ngModel">
-                                <div *ngIf="!valid && pass.valid && submitted" class="alert alert-danger">كلمة السر دي لازم تبقي زي اللي فوق</div>
-                                <div *ngIf="valid && pass.valid && submitted" class="alert alert-success">تمام</div>
+                                <input id="password-confirm" (keyup)="comparePasswords()" required type="password" class="form-control" name="password_confirmation" [(ngModel)]="password" #pass2="ngModel">
+                                <div *ngIf="!passwordsMatch && pass2.valid && submitted" class="alert alert-danger">يجب أن يكونا متطابقين.</div>
+                                <div *ngIf="passwordsMatch && pass2.valid && submitted" class="alert alert-success">كلمة السر مطابقة.</div>
                             </div>
+                            <img *ngIf="pass2?.valid" height="24" width="24" src="/app/assets/validation/green.png">
+                            <img *ngIf="!pass2?.valid" height="24" width="24" src="/app/assets/validation/grey.png">
                         </div>
 
                         <div class="form-group">

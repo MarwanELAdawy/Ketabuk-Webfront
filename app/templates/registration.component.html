@@ -52,7 +52,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" required minlength="8" (keyup)="validatePassword()" type="password" class="form-control" name="password" [(ngModel)]="form.password" #pass1="ngModel">
-                                <div *ngIf="!valid && submitted" class="alert alert-danger">مطلوب مجموعتين من ثلاث مجاميع: حروف، أرقام ورموز. أو اجعل كلمة السر ١٣ حرف أو أكثر. 
+                                <div *ngIf="!valid && submitted" class="alert alert-danger">مطلوب مجموعتين علي الأقل: حروف، أرقام، رموز أو اجعل كلمة السر ١٣ حرف أو أكثر. 
                                     <a href='#'>لماذا نصعب الأمور؟</a>
                                 </div>
                                 <div *ngIf="pass1.dirty">
@@ -64,12 +64,6 @@
                                         <li><i *ngIf="passwordHasSymbols" class="fa fa-check" aria-hidden="true"></i>رموز</li>
                                         <li><i *ngIf="passwordIsMoreThan12" class="fa fa-check" aria-hidden="true"></i>أكثر من ١٢ حرف</li>
                                     </ul>
-                                    </div>
-                                    <div *ngIf="!valid && submitted" class="col-md-2">
-                                        <img align="left" height="114" width="79" src="/app/assets/sayedwsayeda/sayeda.png">
-                                    </div>
-                                    <div *ngIf="valid && submitted" class="col-md-2">
-                                        <img align="left" height="114" width="79" src="/app/assets/sayedwsayeda/sayedaHappy.png">
                                     </div>
                                 </div>
 

@@ -7,6 +7,15 @@
                 <div class="panel-body">
                     <div style="font-size:20px" *ngIf="!isLoggedIn">
 <p>
+    التقدم نحو إصدار Alpha 2!
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" attr.aria-valuenow="{{open_issues}}"
+        aria-valuemin="0" attr.aria-valuemax="{{open_issues + closed_issues}}" [style.width]="issues_ratio">
+            {{issues_ratio}}
+        </div>
+    </div>
+
+<p>
 <strong>كلنا مرضى.</strong>
 </p>
 

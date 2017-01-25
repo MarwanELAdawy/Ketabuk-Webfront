@@ -51,7 +51,7 @@
                             <label for="password"  class="col-md-4 control-label">كلمة السر</label>
 
                             <div class="col-md-6">
-                                <input id="password" required minlength="8" (keyup)="validatePassword()" type="password" class="form-control" name="password" [(ngModel)]="form.password" #pass1="ngModel">
+                                <input id="password" required minlength="6" (keyup)="validatePassword()" type="password" class="form-control" name="password" [(ngModel)]="form.password" #pass1="ngModel">
                                 <div *ngIf="!valid && submitted" class="alert alert-danger">مطلوب مجموعتين علي الأقل: حروف، أرقام، رموز أو اجعل كلمة السر ١٣ حرف أو أكثر. 
                                     <a href='#'>لماذا نصعب الأمور؟</a>
                                 </div>

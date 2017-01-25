@@ -50,5 +50,6 @@ export class RegistrationService
 export class RegistrationForm
 {
     user : User;
+    email : string;
     password : string;
 }

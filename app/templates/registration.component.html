@@ -41,10 +41,10 @@
                             <label for="email" class="col-md-4 control-label">الEmail</label>
 
                             <div class="col-md-6">
-                                <input id="email" required type="email" class="form-control" name="email" [(ngModel)]="form.user.email" #email="ngModel">
+                                <input id="email" required type="email" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" (ngModelChange)="validateEmail()">
                             </div>
-                            <img *ngIf="email?.valid" height="24" width="24" src="/app/assets/validation/green.png">
-                            <img *ngIf="!email?.valid" height="24" width="24" src="/app/assets/validation/grey.png">
+                            <img *ngIf="emailValid" height="24" width="24" src="/app/assets/validation/green.png">
+                            <img *ngIf="!emailValid" height="24" width="24" src="/app/assets/validation/grey.png">
                         </div>
 
                         <div class="form-group">
@@ -55,14 +55,14 @@
                                 <div *ngIf="!valid && submitted" class="alert alert-danger">مطلوب مجموعتين من ثلاث مجاميع: حروف، أرقام ورموز. أو اجعل كلمة السر ١٣ حرف أو أكثر. 
                                     <a href='#'>لماذا نصعب الأمور؟</a>
                                 </div>
-                                <div *ngIf="valid && submitted" class="alert alert-success">تمام</div>
                                 <div *ngIf="pass1.dirty">
-                                    <div class="col-md-6">
-                                    <h4>كلمة السر تـحوي</h4>
+                                    <div class="col-md-12">
+                                    <p>مطلوب مجموعتين علي الأقل:</p>
                                     <ul>
                                         <li><i *ngIf="passwordHasCharacters" class="fa fa-check" aria-hidden="true"></i>حروف</li>
                                         <li><i *ngIf="passwordHasNumbers" class="fa fa-check" aria-hidden="true"></i>أرقام</li>
                                         <li><i *ngIf="passwordHasSymbols" class="fa fa-check" aria-hidden="true"></i>رموز</li>
+                                        <li><i *ngIf="passwordIsMoreThan12" class="fa fa-check" aria-hidden="true"></i>أكثر من ١٢ حرف</li>
                                     </ul>
                                     </div>
                                     <div *ngIf="!valid && submitted" class="col-md-2">
@@ -74,8 +74,8 @@
                                 </div>
 
                         </div>
-                        <img *ngIf="pass1?.valid" height="24" width="24" src="/app/assets/validation/green.png">
-                        <img *ngIf="!pass1?.valid" height="24" width="24" src="/app/assets/validation/grey.png">
+                        <img *ngIf="valid" height="24" width="24" src="/app/assets/validation/green.png">
+                        <img *ngIf="!valid" height="24" width="24" src="/app/assets/validation/grey.png">
     
                         </div>
 
@@ -85,10 +85,9 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" (keyup)="comparePasswords()" required type="password" class="form-control" name="password_confirmation" [(ngModel)]="password" #pass2="ngModel">
                                 <div *ngIf="!passwordsMatch && pass2.valid && submitted" class="alert alert-danger">يجب أن يكونا متطابقين.</div>
-                                <div *ngIf="passwordsMatch && pass2.valid && submitted" class="alert alert-success">كلمة السر مطابقة.</div>
                             </div>
-                            <img *ngIf="pass2?.valid" height="24" width="24" src="/app/assets/validation/green.png">
-                            <img *ngIf="!pass2?.valid" height="24" width="24" src="/app/assets/validation/grey.png">
+                            <img *ngIf="passwordsMatch&&valid" height="24" width="24" src="/app/assets/validation/green.png">
+                            <img *ngIf="!passwordsMatch||!valid" height="24" width="24" src="/app/assets/validation/grey.png">
                         </div>
 
                         <div class="form-group">
@@ -96,7 +95,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-user"></i> سجل
                                 </button>
-                                {{response}}
                             </div>
                         </div>
                     </form>

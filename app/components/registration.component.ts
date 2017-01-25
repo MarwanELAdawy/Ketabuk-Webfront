@@ -19,6 +19,7 @@ export class RegistrationComponent// implements OnInit
     @Input() password: string;
     valid: boolean = false;
     passwordsMatch: boolean = false;
+    emailValid: boolean = false;
     response: string;
     errorMessage: any;
     submitted: boolean = false;
@@ -30,6 +31,7 @@ export class RegistrationComponent// implements OnInit
     regexHasNumbers : RegExp;
     regexHasSymbols : RegExp;
     regexMoreThan12 : RegExp;
+    regexIsEmail : RegExp;
 
     constructor(private registerationService: RegistrationService)
     {
@@ -42,16 +44,18 @@ export class RegistrationComponent// implements OnInit
         var hasNumbers = `(?=.*[0-9١٢٣٤٥٦٧٨٩٠])`;
         var hasSymbols = `(?=.*[!@#$%^&*()_+=٪»«،؟؛\\-\`~±§|\\\\\\'\\";:\\/?\\.,\\<\\>{\\}])`;
         var moreThan12 = `.{12}`;
+        var isEmail = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
         this.regexHasCharacters = new RegExp(hasCharacters);
         this.regexHasNumbers = new RegExp(hasNumbers);
         this.regexHasSymbols = new RegExp(hasSymbols);
         this.regexMoreThan12 = new RegExp(moreThan12);
+        this.regexIsEmail = isEmail;
     }
 
-    // ngOnInit()
-    // {
-        
-    // }
+    validateEmail()
+    {
+        this.regexIsEmail.test(this.form.email) ? this.emailValid = true : this.emailValid = false;
+    }
 
     setJournalModified($event)
     {

@@ -26,7 +26,12 @@ export class HomeComponent implements OnInit
     {
         if (this.isLoggedIn = SuperAuth.isLoggedIn())
             this.getJournals();
-        else this.getMilestoneProgress();
+        else
+        {
+            this.closed_issues = 0;
+            this.open_issues = 0;
+            this.getMilestoneProgress();
+        }
     }
 
     getJournals()
@@ -39,7 +44,11 @@ export class HomeComponent implements OnInit
 
     getMilestoneProgress()
     {
-        this.githubService.getMilestone()
+        this.githubService.getWebfrontMilestone()
+                          .subscribe(
+                              response => this._MilestoneProgressCallback(response),
+                              error =>  this.errorMessage = <any>error);
+        this.githubService.getServerMilestone()
                           .subscribe(
                               response => this._MilestoneProgressCallback(response),
                               error =>  this.errorMessage = <any>error);
@@ -47,8 +56,8 @@ export class HomeComponent implements OnInit
 
     _MilestoneProgressCallback(response)
     {
-        this.open_issues = response.open_issues;
-        this.closed_issues = response.closed_issues;
+        this.open_issues += response.open_issues;
+        this.closed_issues += response.closed_issues;
         var tmp =  100 * (this.closed_issues / (this.open_issues + this.closed_issues));
         this.issues_ratio = tmp.toFixed().toString() + "%";
     }

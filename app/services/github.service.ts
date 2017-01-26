@@ -12,11 +12,20 @@ export class GithubService
   constructor (private http: SuperAuth)
   {}
 
-  private githubUrl = 'https://api.github.com/repos/Ketabuk/Ketabuk-Webfront/milestones/1';  // URL to github api
+  private githubWebfrontUrl = 'https://api.github.com/repos/Ketabuk/Ketabuk-Webfront/milestones/1';  // URL to github api
+  private githubServerUrl = 'https://api.github.com/repos/Ketabuk/Ketabuk-Server/milestones/1';  // URL to github api
 
-  getMilestone (): Observable<any>
+
+  getWebfrontMilestone (): Observable<any>
   {
-      return this.http.get(this.githubUrl)
+      return this.http.get(this.githubWebfrontUrl)
+                 .map(this.extractData)
+                 .catch(this.handleError);
+  }
+
+  getServerMilestone (): Observable<any>
+  {
+      return this.http.get(this.githubServerUrl)
                  .map(this.extractData)
                  .catch(this.handleError);
   }

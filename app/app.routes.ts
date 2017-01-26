@@ -8,28 +8,28 @@ import { RegistrationComponent } from './components/registration.component';
 import { SuperAuth } from './supers/super-auth';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent
-  },
-  {
-      path: 'login',
-      component: LoginComponent,
-      canActivate: [SuperAuth]
-  },
-    {
-      path: 'register',
-      component: RegistrationComponent,
-      canActivate: [SuperAuth]
-  },
-  {
-    path: 'journal/:id',
-    component: JournalComponent
-  },
-  {
-    path: 'settings',
-    component: SettingsComponent
-  }
+	{
+		path: '',
+		component: HomeComponent
+	},
+	{
+			path: 'login',
+			component: LoginComponent,
+			canActivate: [SuperAuth]
+	},
+		{
+			path: 'register',
+			component: RegistrationComponent,
+			canActivate: [SuperAuth]
+	},
+	{
+		path: 'journal/:id',
+		component: JournalComponent
+	},
+	{
+		path: 'settings',
+		component: SettingsComponent
+	}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

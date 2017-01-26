@@ -1,24 +1,24 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">أهلاً</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">أهلاً</div>
 
-                <div class="panel-body">
-                    <div style="font-size:20px" *ngIf="!isLoggedIn">
+				<div class="panel-body">
+					<div style="font-size:20px" *ngIf="!isLoggedIn">
 <p>
-    التقدم نحو إصدار
-    Alpha 2
-    في ال
-    <a href="https://github.com/Ketabuk/Ketabuk-Webfront/milestone/1">Frontend</a>
-    وال
-    <a href="https://github.com/Ketabuk/Ketabuk-Server/milestone/1">Backend</a>!
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" attr.aria-valuenow="{{closed_issues}}"
-        aria-valuemin="0" attr.aria-valuemax="{{open_issues + closed_issues}}" [style.width]="issues_ratio">
-            {{issues_ratio}}
-        </div>
-    </div>
+	التقدم نحو إصدار
+	Alpha 2
+	في ال
+	<a href="https://github.com/Ketabuk/Ketabuk-Webfront/milestone/1">Frontend</a>
+	وال
+	<a href="https://github.com/Ketabuk/Ketabuk-Server/milestone/1">Backend</a>!
+	<div class="progress">
+		<div class="progress-bar" role="progressbar" attr.aria-valuenow="{{closed_issues}}"
+		aria-valuemin="0" attr.aria-valuemax="{{open_issues + closed_issues}}" [style.width]="issues_ratio">
+			{{issues_ratio}}
+		</div>
+	</div>
 
 <p>
 <strong>كلنا مرضى.</strong>
@@ -42,22 +42,22 @@
 </p>
 
 <p>
-    <strong>
+	<strong>
 إنه لا شك أن بداية العلاج تكمن في الصلاة.
-    </strong>
+	</strong>
 </p>
 
 <p>
 هنا تجد موقعاً لا يعرف فيه أحدٌ أحداً. أسماؤنا مستعارة. لا يحكم فيه أحدٌ على أحد. لا فضل فيه لأحد على أحد. كلنا مرضى وكلنا هنا نكتب أملاً في العلاج. إذا سجلت كان لك كتابك، تكتب فيه كيف تجاهد أمراضك يوماً بعد يوم. 
 </p>
 
-    <ul>
+	<ul>
 <li> لم أصل العشاء اليوم كسلاً ولكني صليت باقى الفروض. </li>
 <li> تعصبت اليوم على أمي. تستفزني كثيراً ولكن لا يصح بأي حال أن أعاملها بهذه الطريقة. </li>
 <li> أفعل الخير دائماً وصوب عيني كلام الناس عني. أتمني لو أكف عن الرياء. </li>
 <li> قد صليت كل فروضي اليوم! ما شاء الله على. :D </li>
 <li> اليوم الخامس من رمضان، أفطرت لرغبتي في سجارة. لعن الله السجائر. </li>
-    </ul>
+	</ul>
 
 <p>
 اعلم أنه بينما نكتب -نحن مطوري الموقع- بالعربية 
@@ -93,18 +93,18 @@
 <img src="/app/assets/icons/github.png" height="35" width="35">
 </a>
 </p>
-                    </div>
-                    <table *ngIf="isLoggedIn" class="table">
-                            <tr *ngFor="let journal of journals">  
-                                <td>
-                                    <a href="/journal/{{journal.id}}">
-                                        {{journal.name}}
-                                    </a>
-                                </td>
-                            </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+					</div>
+					<table *ngIf="isLoggedIn" class="table">
+							<tr *ngFor="let journal of journals">  
+								<td>
+									<a href="/journal/{{journal.id}}">
+										{{journal.name}}
+									</a>
+								</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

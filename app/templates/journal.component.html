@@ -1,73 +1,73 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2>
-                        <i class="fa fa-book" aria-hidden="true"></i>{{ journal?.name }}
-                    </h2>
-                </div>
-                <div class="panel-body">
-                    <!-- New Post Form -->
-                    <form class="form-horizontal" (ngSubmit)="submitPost()" novalidate>
-                        <!-- Post Content -->
-                        <div class="form-group">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2>
+						<i class="fa fa-book" aria-hidden="true"></i>{{ journal?.name }}
+					</h2>
+				</div>
+				<div class="panel-body">
+					<!-- New Post Form -->
+					<form class="form-horizontal" (ngSubmit)="submitPost()" novalidate>
+						<!-- Post Content -->
+						<div class="form-group">
 
-                            <div style="width:96%; margin: 2% " class="col-sm-6">
-                                <textarea [htmlEditor] name="content" id="post-content" class="form-control" rows="5" required="required">
-                                </textarea>
+							<div style="width:96%; margin: 2% " class="col-sm-6">
+								<textarea [htmlEditor] name="content" id="post-content" class="form-control" rows="5" required="required">
+								</textarea>
 
-                            </div>
+							</div>
 
 
-                        </div>
-                        <!-- Post Button -->
+						</div>
+						<!-- Post Button -->
 
-                        <div class="form-group">
-                            <div class="col-sm-offset-4 col-sm-4">
-                                <button type="submit" id="postButton" class="btn btn-default">
-                                    <i class="fa fa-plus" aria-hidden="true"></i><span> اكتب</span>
+						<div class="form-group">
+							<div class="col-sm-offset-4 col-sm-4">
+								<button type="submit" id="postButton" class="btn btn-default">
+									<i class="fa fa-plus" aria-hidden="true"></i><span> اكتب</span>
  
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    <hr />
-                    <div class="posts">
-                        <div *ngFor="let post of posts" class="post panel panel-default panel-body">
-                            <div class="user col-lg-2">
-                              <p>
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <strong style="padding-right:20px;">{{post.user.name}} يكتب:</strong>
-                                <br />
-                              </p>
-                            </div>
-                            <div [innerHTML]="post.content" class="content col-lg-9 text-justify bigger">
-                                {{ post.content }}
-                            </div>
-                            <div class="edit text-center col-lg-1" style="padding-top:25px;">
-                                <div class="dropdown">
-                                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <i class="fa fa-cog" aria-hidden="true"></i>
-                                    <span> </span>
-                                    <span class="caret"></span>
-                                  </button>
-                                  <ul class="dropdown-menu">
-                                    <!-- only author of post can edit -->
-                                        <li *ngIf="userMayEdit(post.user)"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> تعديل</a></li>
-                                    <!-- You should by either post author or journal owner to be able to delete a post -->
-                                        <form *ngIf="userMayEdit(post.user) || (user.id == journal.user.id)" (ngSubmit)="deletePost(post.id)" class="form-horizontal">
-                                        <button type="submit" id="deleteButton" class="aslink"><i class="fa fa-trash" aria-hidden="true"></i> حذف</button>
-                                        </form>
+								</button>
+							</div>
+						</div>
+					</form>
+					<hr />
+					<div class="posts">
+						<div *ngFor="let post of posts" class="post panel panel-default panel-body">
+							<div class="user col-lg-2">
+							  <p>
+								<i class="fa fa-user" aria-hidden="true"></i>
+								<strong style="padding-right:20px;">{{post.user.name}} يكتب:</strong>
+								<br />
+							  </p>
+							</div>
+							<div [innerHTML]="post.content" class="content col-lg-9 text-justify bigger">
+								{{ post.content }}
+							</div>
+							<div class="edit text-center col-lg-1" style="padding-top:25px;">
+								<div class="dropdown">
+								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+									<i class="fa fa-cog" aria-hidden="true"></i>
+									<span> </span>
+									<span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu">
+									<!-- only author of post can edit -->
+										<li *ngIf="userMayEdit(post.user)"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> تعديل</a></li>
+									<!-- You should by either post author or journal owner to be able to delete a post -->
+										<form *ngIf="userMayEdit(post.user) || (user.id == journal.user.id)" (ngSubmit)="deletePost(post.id)" class="form-horizontal">
+										<button type="submit" id="deleteButton" class="aslink"><i class="fa fa-trash" aria-hidden="true"></i> حذف</button>
+										</form>
 
-                                    <li><a href="#"><i class="fa fa-flag" aria-hidden="true"></i> الإبلاغ عن المحتوى</a></li>
-                                  </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+									<li><a href="#"><i class="fa fa-flag" aria-hidden="true"></i> الإبلاغ عن المحتوى</a></li>
+								  </ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

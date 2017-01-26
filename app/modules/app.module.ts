@@ -17,28 +17,28 @@ import { EditorDirective } from '../directives/tinyMCE.directive';
 import { Config } from '../config';
 
 if(Config.IN_PRODUCTION)
-    enableProdMode();
+	enableProdMode();
 
 @NgModule({
-    declarations: [
-                    AppComponent,
-                    HomeComponent,
-                    JournalComponent,
-                    LoginComponent,
-                    RegistrationComponent,
-                    SettingsComponent,
-                    EditorDirective
-                  ],
-    providers: [
-        SuperAuth
-    ],
-    imports:      [
-                    BrowserModule,
-                    HttpModule,
-                    FormsModule,
-                    RouterModule,
-                    routing,
-                  ],
-    bootstrap:    [AppComponent],
+	declarations: [
+					AppComponent,
+					HomeComponent,
+					JournalComponent,
+					LoginComponent,
+					RegistrationComponent,
+					SettingsComponent,
+					EditorDirective
+				  ],
+	providers: [
+		SuperAuth
+	],
+	imports:      [
+					BrowserModule,
+					HttpModule,
+					FormsModule,
+					RouterModule,
+					routing,
+				  ],
+	bootstrap:    [AppComponent],
 })
 export class AppModule {}

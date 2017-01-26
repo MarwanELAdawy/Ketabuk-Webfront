@@ -1,42 +1,42 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-cog" aria-hidden="true"></i><strong> الضبط</strong></div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading"><i class="fa fa-cog" aria-hidden="true"></i><strong> الضبط</strong></div>
 
-                <div class="panel-body">
-                    <form class="form-horizontal" (ngSubmit)="changeUserName()" #userNameForm="ngForm">
-                        <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">الاسم المستعار</label>
-                            <div class="col-md-6">
-                                <input id="username" required type="text" class="form-control" name="username" value="{{user?.name}}" [(ngModel)]="user.name" #userName="ngModel">
-                            </div>
-                            <button [disabled]="!userName.dirty" type="submit" class="btn btn-primary">
-                                احفظ
-                            </button>
-                            <span *ngIf="userNameChanged" class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-check fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </div>
-                    </form>
-                    <form class="form-horizontal" (ngSubmit)="changeJournalName()" #journalNameForm="ngForm">
-                        <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">اسم الكـتـاب</label>
-                            <div class="col-md-6">
-                                <input id="journal_name" required type="text" class="form-control" name="journal_name" value="{{user?.journal.name}}" [(ngModel)]="user.journal.name" #journalName="ngModel">
-                            </div>
-                            <button [disabled]="!journalName.dirty" type="submit" class="btn btn-primary">
-                                احفظ
-                            </button>
-                            <span *ngIf="journalNameChanged" class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-check fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+				<div class="panel-body">
+					<form class="form-horizontal" (ngSubmit)="changeUserName()" #userNameForm="ngForm">
+						<div class="form-group">
+							<label for="name" class="col-md-4 control-label">الاسم المستعار</label>
+							<div class="col-md-6">
+								<input id="username" required type="text" class="form-control" name="username" value="{{user?.name}}" [(ngModel)]="user.name" #userName="ngModel">
+							</div>
+							<button [disabled]="!userName.dirty" type="submit" class="btn btn-primary">
+								احفظ
+							</button>
+							<span *ngIf="userNameChanged" class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-check fa-stack-1x fa-inverse"></i>
+							</span>
+						</div>
+					</form>
+					<form class="form-horizontal" (ngSubmit)="changeJournalName()" #journalNameForm="ngForm">
+						<div class="form-group">
+							<label for="name" class="col-md-4 control-label">اسم الكـتـاب</label>
+							<div class="col-md-6">
+								<input id="journal_name" required type="text" class="form-control" name="journal_name" value="{{user?.journal.name}}" [(ngModel)]="user.journal.name" #journalName="ngModel">
+							</div>
+							<button [disabled]="!journalName.dirty" type="submit" class="btn btn-primary">
+								احفظ
+							</button>
+							<span *ngIf="journalNameChanged" class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-check fa-stack-1x fa-inverse"></i>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

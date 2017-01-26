@@ -1,45 +1,45 @@
 <nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
+	<div class="container">
+		<div class="navbar-header">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+			<!-- Collapsed Hamburger -->
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+				<span class="sr-only">Toggle Navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 
-            <!-- Branding Image -->
-            <a [routerLink]="['/']" class="navbar-brand">
-            المكـتـبـة
-            </a>
-        </div>
-        <ul *ngIf="m_isLoggedIn" class="nav navbar-nav">
-            <li><a href="journal/{{user.journal.id}}">كـتـابُك</a></li>
-        </ul>
+			<!-- Branding Image -->
+			<a [routerLink]="['/']" class="navbar-brand">
+			المكـتـبـة
+			</a>
+		</div>
+		<ul *ngIf="m_isLoggedIn" class="nav navbar-nav">
+			<li><a href="journal/{{user.journal.id}}">كـتـابُك</a></li>
+		</ul>
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Right Side Of Navbar -->
+		<div class="collapse navbar-collapse" id="app-navbar-collapse">
+			<!-- Right Side Of Navbar -->
 
 
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-left">
-                <!-- Authentication Links -->
-                    <li *ngIf="!m_isLoggedIn"><a [routerLink]="['/login']">ادخل</a></li>
-                    <li *ngIf="!m_isLoggedIn"><a [routerLink]="['/register']">سجل</a></li>
-                    <li *ngIf="m_isLoggedIn" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ user?.name }} <span class="caret"></span>
-                        </a>
+			<!-- Left Side Of Navbar -->
+			<ul class="nav navbar-nav navbar-left">
+				<!-- Authentication Links -->
+					<li *ngIf="!m_isLoggedIn"><a [routerLink]="['/login']">ادخل</a></li>
+					<li *ngIf="!m_isLoggedIn"><a [routerLink]="['/register']">سجل</a></li>
+					<li *ngIf="m_isLoggedIn" class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							{{ user?.name }} <span class="caret"></span>
+						</a>
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a [routerLink]="['/settings']"><i class="fa fa-cog" aria-hidden="true"></i> الضبط</a></li>
-                            <li><a (click)="logout()" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> اخرج</a></li>
-                        </ul>
-                    </li>
-            </ul>
-        </div>
-    </div>
+						<ul class="dropdown-menu" role="menu">
+							<li><a [routerLink]="['/settings']"><i class="fa fa-cog" aria-hidden="true"></i> الضبط</a></li>
+							<li><a (click)="logout()" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> اخرج</a></li>
+						</ul>
+					</li>
+			</ul>
+		</div>
+	</div>
 </nav>
 <router-outlet></router-outlet>

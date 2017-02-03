@@ -29,7 +29,7 @@ export class JournalService
 										.catch(this.handleError);
 	}
 
-	changeJournalName(id: number, value: string): Observable<number>
+	changeJournalName(id: number, value: string): Observable<string>
 	{
 		return this.http.put(this.journalsUrl + '/' + id, value)
 										.map(this.extractData)

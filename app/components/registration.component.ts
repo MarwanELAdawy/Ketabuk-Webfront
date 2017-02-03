@@ -57,12 +57,12 @@ export class RegistrationComponent// implements OnInit
 		this.regexIsEmail.test(this.form.email) ? this.emailValid = true : this.emailValid = false;
 	}
 
-	setJournalModified($event)
+	setJournalModified($event: any)
 	{
 		this.journalModified = true;
 	}
 
-	setJournalName($event)
+	setJournalName($event: any)
 	{
 		this.form.user.journal.name = "كـتـاب " + this.form.user.name;
 	}

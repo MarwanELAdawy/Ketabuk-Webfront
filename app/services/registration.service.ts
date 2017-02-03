@@ -16,7 +16,7 @@ export class RegistrationService
 
 	private registrationUrl = Config.API_URL + 'register';  // URL to web API
 
-	register (registrationForm: RegistrationForm): Observable<string>
+	register (registrationForm: RegistrationForm): Observable<User>
 	{
 		let body = JSON.stringify({ registrationForm });
 		//TODO: remove at production

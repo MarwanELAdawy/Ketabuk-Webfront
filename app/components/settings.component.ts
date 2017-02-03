@@ -37,7 +37,7 @@ export class SettingsComponent implements OnInit
 												);
 	}
 
-	onUserChanged(response)
+	onUserChanged(response: string)
 	{
 		if(response != this.user.name)
 			return;
@@ -54,7 +54,7 @@ export class SettingsComponent implements OnInit
 												);
 	}
 
-	onJournalChanged(response)
+	onJournalChanged(response: string)
 	{
 		if(response != this.user.journal.name)
 			return;

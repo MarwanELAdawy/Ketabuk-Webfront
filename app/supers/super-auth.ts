@@ -31,14 +31,14 @@ export class SuperAuth implements CanActivate
 	return true;
   }
 
-  get(url)
+  get(url: string)
   {
 	if(SuperAuth.isLoggedIn())
 		return this.http.get(this.attachToken(url));
 	return this.http.get(url);
   }
 
-  put(url, value)
+  put(url: string, value: string)
   {
 	  if(!SuperAuth.isLoggedIn())
 		return;
@@ -49,7 +49,7 @@ export class SuperAuth implements CanActivate
 	  return this.http.post(this.attachToken(url), data, options);
   }
 
-  delete(url)
+  delete(url: string)
   {
 	  if(!SuperAuth.isLoggedIn())
 		return;
@@ -62,14 +62,14 @@ export class SuperAuth implements CanActivate
 	return this.http.post(this.attachToken(url), data, options);
   }
 
-  post(url, data, options = {})
+  post(url: string, data: string, options = {})
   {
 	if(SuperAuth.isLoggedIn())
 		return this.http.post(this.attachToken(url), data, options);
 	return this.http.post(url, data, options);
   }
 
-  private attachToken(url) : string
+  private attachToken(url: string) : string
   {
 	  return url + '?token=' + SuperAuth.getJWT();
   }
@@ -100,7 +100,7 @@ export class SuperAuth implements CanActivate
 	  location.href = '/';
   }
 
-  public static login(response)
+  public static login(response: User)
   {
 	  localStorage.setItem( Config.USER_FIELD, JSON.stringify(response) );
 	  location.href = '/';

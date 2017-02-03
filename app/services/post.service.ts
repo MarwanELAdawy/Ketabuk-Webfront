@@ -31,7 +31,7 @@ export class PostService
 										.catch(this.handleError);
 	}
 
-	deletePost(journal_id, post_id)
+	deletePost(journal_id: number, post_id: number)
 	{
 		return this.http.delete(this.postsUrl + '/' + journal_id + '/post/' + post_id)
 										.map(this.extractData)

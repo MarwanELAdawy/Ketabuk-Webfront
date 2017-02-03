@@ -52,8 +52,8 @@ export class JournalComponent implements OnInit
 			content_css : "/app/assets/css/main.css",
 			body_class: 'bigger',
 			// This writes the content of the post to newPostText in real time.
-			setup: (ed) => {
-			ed.on('keyup change', (ed, l) => {
+			setup: (ed: any) => {
+			ed.on('keyup change', (ed:any, l:any) => {
 				this.zone.run(()=> {
 				this.newPostText = tinymce.activeEditor.getContent();
 				});
@@ -103,7 +103,7 @@ export class JournalComponent implements OnInit
 		return false;
 	}
 
-	deletePost(id)
+	deletePost(id: number)
 	{
 		this.postService.deletePost(this.journal_id, id)
 						.subscribe(

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { RuntimeCompiler} from '@angular/compiler';
 
 import { JournalService } from '../services/journal.service';
-import { GithubService } from '../services/github.service';
+import { GithubService, GithubResponse, GithubUser } from '../services/github.service';
 import { Journal } from '../models/journal';
 import { SuperAuth } from '../supers/super-auth';
 
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit
 							  error =>  this.errorMessage = <any>error);
 	}
 
-	_MilestoneProgressCallback(response)
+	_MilestoneProgressCallback(response: GithubResponse)
 	{
 		this.open_issues += response.open_issues;
 		this.closed_issues += response.closed_issues;

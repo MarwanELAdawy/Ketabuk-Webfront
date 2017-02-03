@@ -1,42 +1,43 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<base href="/">
-		<title>Ketabuk</title>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="app/assets/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="app/assets/bootstrap-rtl/css/bootstrap-rtl.min.css">
-		<link rel="stylesheet" href="app/assets/css/main.css">
-		<link rel="stylesheet" href="app/assets/font-awesome-4.6.3/css/font-awesome.min.css">
-		<link rel="stylesheet" href="app/assets/amiri-0.108-webfonts/amiri.css">
-		<!-- 1. Load libraries -->
-		 <!-- Polyfill(s) for older browsers -->
-		<script src="node_modules/core-js/client/shim.min.js"></script>
-		<script src="node_modules/zone.js/dist/zone.js"></script>
-		<script src="node_modules/reflect-metadata/Reflect.js"></script>
-		<script src="node_modules/systemjs/dist/system.src.js"></script>
-		<!-- 2. Configure SystemJS -->
-		<script src="systemjs.config.js"></script>
-		<script>
-			System.import('app').catch(function(err){ console.error(err); });
-		</script>
-		<p>
-				<script src='app/assets/tinymce/js/tinymce/tinymce.min.js'></script>
-		</p>
-		<script>
-			tinymce.init({
-				selector: '#post-content',
-				plugins: "directionality",
-				menubar: false,
-				directionality: "rtl",
-				content_css : "/css/main.css",
-				body_class: 'bigger',
-			});
-		</script>
-	</head>
-	<!-- 3. Display the application -->
-	<body id="app-layout">
+  <head>
+    <title>Angular QuickStart</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <link rel="stylesheet" href="app/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/assets/bootstrap-rtl/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="app/assets/css/main.css">
+    <link rel="stylesheet" href="app/assets/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="app/assets/amiri-0.108-webfonts/amiri.css">
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('main.js').catch(function(err){ console.error(err); });
+    </script>
+	<p>
+			<script src='app/assets/tinymce/js/tinymce/tinymce.min.js'></script>
+	</p>
+	<script>
+		tinymce.init({
+			selector: '#post-content',
+			plugins: "directionality",
+			menubar: false,
+			directionality: "rtl",
+			content_css : "/css/main.css",
+			body_class: 'bigger',
+		});
+	</script>
+  </head>
+
+  <body id="app-layout">
 		
 		<my-app>لحظات قليلة...</my-app>
 
@@ -45,6 +46,5 @@
 		<script type="text/javascript" src="app/assets/jquery/jquery-2.2.3.min.js"></script>
 		<script type="text/javascript" src="app/assets/bootstrap/js/bootstrap.min.js"></script>
 
-	</body>
+  </body>
 </html>
-

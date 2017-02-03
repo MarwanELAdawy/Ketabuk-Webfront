@@ -15,14 +15,14 @@ export class GithubService
 	private githubServerUrl = 'https://api.github.com/repos/Ketabuk/Ketabuk-Server/milestones/1';  // URL to github api
 
 
-	getWebfrontMilestone (): Observable<any>
+	getWebfrontMilestone (): Observable<GithubResponse>
 	{
 			return this.http.get(this.githubWebfrontUrl)
 								 .map(this.extractData)
 								 .catch(this.handleError);
 	}
 
-	getServerMilestone (): Observable<any>
+	getServerMilestone (): Observable<GithubResponse>
 	{
 			return this.http.get(this.githubServerUrl)
 								 .map(this.extractData)
@@ -45,4 +45,44 @@ export class GithubService
 		return Observable.throw(errMsg);
 	}
 
+}
+
+//  how to github reponse looks like: https://developer.github.com/v3/issues/milestones/
+export class GithubResponse
+{
+		url: string;
+		html_url: string;
+		labels_url: string;
+		id: number;
+		state: string;
+		title: string;
+		description: string;
+		creator: GithubUser;
+		open_issues: number;
+		closed_issues: number;
+		created_at: string;
+		updated_at: string;
+		closed_at: string;
+		due_on: string;
+}
+
+export class GithubUser
+{
+	login: string;
+	id: number;
+	avatar_url: string;
+	gravatar_id: string;
+	url: string;
+	html_url: string;
+	followers_url: string;
+	following_url: string;
+	gists_url: string;
+	starred_url: string;
+	subscriptions_url: string;
+	organizations_url: string;
+	repos_url: string;
+	events_url: string;
+	received_events_url: string;
+	type: string;
+	site_admin: boolean;
 }

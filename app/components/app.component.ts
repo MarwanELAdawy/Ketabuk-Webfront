@@ -1,9 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-import { HomeComponent } from './home.component';
-import { JournalComponent } from './journal.component'
-import { LoginComponent } from './login.component';
-import { RegistrationComponent } from './registration.component';
 import { SuperAuth } from '../supers/super-auth';
 import { Config } from '../config';
 import { Journal } from '../models/journal';

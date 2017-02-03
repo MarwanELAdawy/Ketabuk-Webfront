@@ -13,7 +13,7 @@ export class NotificationService
 	
 	private notificationsUrl = Config.API_URL + 'notifications';  // URL to web API
 	
-	getWebfrontMilestone (): Observable<any>
+	getNotifications (): Observable<any>
 	{
 			return this.http.get(this.notificationsUrl)
 								 .map(this.extractData)
@@ -24,7 +24,7 @@ export class NotificationService
 	{
 		SuperService.extractData(response);
 		let body = response.json();
-		return body || { };
+		return body.notifications || { };
 	}
 
 	private handleError (error: any)

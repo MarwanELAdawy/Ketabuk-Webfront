@@ -5,7 +5,7 @@
 
 	<ul class="dropdown-menu" role="menu">
 		<li>
-				<a *ngFor="let notification of notifications" >{{notification.notify_body}}</a>
+				<a *ngFor="let notification of notifications" href="/journal/{{user.journal.id}}">{{notification?.data.poster}} كتب إليك</a>
 		</li>
 	</ul>
 </li>

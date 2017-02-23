@@ -13,7 +13,7 @@ import '../rxjs-operators';
 })
 export class NotificationComponent implements OnInit
 {
-	notifications: any;
+	notifications: any[];
 	errorMessage: string;
 
 	private user : User;
@@ -37,5 +37,13 @@ export class NotificationComponent implements OnInit
 	setUser()
 	{
 		this.user = SuperAuth.getAuthenticatedUser();
+	}
+
+	handleNotifications(notifications: any[])
+	{
+		notifications.forEach(notification => {
+			if (notification.type == "App\\Notifications\\PostOnYourJournal")
+				this.notifications.push(notification);
+		});
 	}
 }

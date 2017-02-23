@@ -15,6 +15,7 @@ import { RegistrationComponent } from '../components/registration.component';
 import { SettingsComponent } from '../components/settings.component';
 import { NotificationComponent } from '../components/notification.component';
 import { EditorDirective } from '../directives/tinyMCE.directive';
+import { RemoveHostDirective } from '../directives/remove-host.directive';
 import { Config } from '../config';
 
 if(Config.IN_PRODUCTION)
@@ -29,7 +30,8 @@ if(Config.IN_PRODUCTION)
 					RegistrationComponent,
 					SettingsComponent,
 					NotificationComponent,
-					EditorDirective
+					EditorDirective,
+					RemoveHostDirective,
 				  ],
 	providers: [
 		SuperAuth

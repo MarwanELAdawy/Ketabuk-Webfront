@@ -28,8 +28,8 @@
 				<!-- Authentication Links -->
 					<li *ngIf="!m_isLoggedIn"><a [routerLink]="['/login']">ادخل</a></li>
 					<li *ngIf="!m_isLoggedIn"><a [routerLink]="['/register']">سجل</a></li>
-					<my-notification remove-host></my-notification>
-					<li class="dropdown">
+					<my-notification *ngIf="m_isLoggedIn" remove-host></my-notification>
+					<li *ngIf="m_isLoggedIn" class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 							{{ user?.name }} <span class="caret"></span>
 						</a>

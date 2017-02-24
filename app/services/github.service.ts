@@ -11,8 +11,8 @@ export class GithubService
 	constructor (private http: SuperAuth)
 	{}
 	
-	private githubWebfrontUrl = 'https://api.github.com/repos/Ketabuk/Ketabuk-Webfront/milestones/1';  // URL to github api
-	private githubServerUrl = 'https://api.github.com/repos/Ketabuk/Ketabuk-Server/milestones/1';  // URL to github api
+	private githubWebfrontUrl = 'https://api.github.com/repos/Ketabuk/Ketabuk-Webfront/milestones/2';  // URL to github api
+	private githubServerUrl = 'https://api.github.com/repos/Ketabuk/Ketabuk-Server/milestones/2';  // URL to github api
 
 
 	getWebfrontMilestone (): Observable<GithubResponse>

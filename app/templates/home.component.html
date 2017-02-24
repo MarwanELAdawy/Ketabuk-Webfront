@@ -8,11 +8,11 @@
 					<div style="font-size:20px" *ngIf="!isLoggedIn">
 <p>
 	التقدم نحو إصدار
-	Alpha 3
+	{{ milestoneName }}
 	في ال
-	<a href="https://github.com/Ketabuk/Ketabuk-Webfront/milestone/2">Frontend</a>
+	<a href="{{ githubWebfrontUrl }}">Frontend</a>
 	وال
-	<a href="https://github.com/Ketabuk/Ketabuk-Server/milestone/2">Backend</a>!
+	<a href="{{ githubServerUrl }}">Backend</a>!
 	<div class="progress">
 		<div class="progress-bar" role="progressbar" attr.aria-valuenow="{{closed_issues}}"
 		aria-valuemin="0" attr.aria-valuemax="{{open_issues + closed_issues}}" [style.width]="issues_ratio">

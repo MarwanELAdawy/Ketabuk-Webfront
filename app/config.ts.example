@@ -4,6 +4,9 @@ export class Config
 	public static get JWT_FIELD_NAME(): string { return 'kt_id_token'; }
 	public static get USER_FIELD(): string { return 'kt_user'; }
 	public static get IN_PRODUCTION(): boolean { return true; }
+	public static get GITHUB_API_FRONT_URL(): string { return ""; }
+	public static get GITHUB_API_BACK_URL(): string { return ""; }
+	public static get MILESTONE_NAME(): string { return ""; }
 	
 	public static get ALL_FIELDS(): string[]
 	{

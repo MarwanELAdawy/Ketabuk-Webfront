@@ -5,6 +5,7 @@ import { JournalService } from '../services/journal.service';
 import { GithubService, GithubResponse, GithubUser } from '../services/github.service';
 import { Journal } from '../models/journal';
 import { SuperAuth } from '../supers/super-auth';
+import { Config } from '../config';
 
 @Component({
 	selector: 'home',
@@ -19,6 +20,10 @@ export class HomeComponent implements OnInit
 	issues_ratio: string;
 	errorMessage: string;
 	isLoggedIn: boolean;
+	githubWebfrontUrl: string = Config.GITHUB_API_FRONT_URL;  // URL to github api
+	githubServerUrl: string = Config.GITHUB_API_BACK_URL;  // URL to github api
+	milestoneName: string = Config.MILESTONE_NAME;
+	
 	constructor(private journalService: JournalService, private githubService: GithubService){}//, private _runtimeCompiler: RuntimeCompiler) {}
 	
 

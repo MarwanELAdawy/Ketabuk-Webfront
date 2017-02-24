@@ -1,11 +1,14 @@
-<li class="dropdown">
+<li (click)="onClick()" class="dropdown">
 	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-		إخطارات <span class="caret"></span>
+		إخطارات 
+		<span *ngIf="unReadNotifications.length" class="badge" style="background-color: rgba(240, 0, 0, 1);">{{ unReadNotifications?.length }}</span>
+		<span class="caret"></span>
 	</a>
 
 	<ul class="dropdown-menu" role="menu">
 		<li>
-				<a *ngFor="let notification of notifications" href="/journal/{{user.journal.id}}">{{notification?.data.poster}} كتب إليك</a>
+			<a *ngFor="let notification of unReadNotifications" href="/journal/{{user.journal.id}}">{{notification?.data.poster}} كتب إليك</a>
+			<a *ngFor="let notification of notifications" href="/journal/{{user.journal.id}}">{{notification?.data.poster}} كتب إليك</a>
 		</li>
 	</ul>
 </li>

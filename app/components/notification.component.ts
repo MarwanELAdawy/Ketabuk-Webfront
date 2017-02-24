@@ -13,7 +13,8 @@ import '../rxjs-operators';
 })
 export class NotificationComponent implements OnInit
 {
-	notifications: any[];
+	notifications: any[] = [];
+	unReadNotifications: any[] = [];
 	errorMessage: string;
 
 	private user : User;
@@ -30,7 +31,7 @@ export class NotificationComponent implements OnInit
 	{
 	  this.notificationService.getNotifications()
 						  .subscribe(
-						  notifications => this.notifications = notifications,
+						  notifications => this.handleNotifications(notifications),
 						  error =>  this.errorMessage = <any>error);
 	}
 
@@ -42,8 +43,23 @@ export class NotificationComponent implements OnInit
 	handleNotifications(notifications: any[])
 	{
 		notifications.forEach(notification => {
-			if (notification.type == "App\\Notifications\\PostOnYourJournal")
-				this.notifications.push(notification);
+			if (notification.read_at) this.notifications.push(notification);
+			else this.unReadNotifications.push(notification);
 		});
+	}
+
+	onClick()
+	{
+		if (this.unReadNotifications.length > 0)
+			this.notificationService.markNotificationsRead()
+			.subscribe(
+				whatever => this.handleNotificationsRead(whatever),
+				error => this.errorMessage = <any>error);
+	}
+
+	handleNotificationsRead(whatever: any)
+	{
+		this.notifications = this.notifications.concat(this.unReadNotifications);
+		this.unReadNotifications = [];
 	}
 }

@@ -11,13 +11,20 @@ export class NotificationService
 	constructor (private http: SuperAuth)
 	{}
 	
-	private notificationsUrl = Config.API_URL + 'notifications';  // URL to web API
+	private notificationsUrl = Config.API_URL + 'notification';  // URL to web API
 	
 	getNotifications (): Observable<any>
 	{
 			return this.http.get(this.notificationsUrl)
 								 .map(this.extractData)
 								 .catch(this.handleError);
+	}
+
+	markNotificationsRead(): Observable<any>
+	{
+		return this.http.post(this.notificationsUrl, "")
+						.map(this.extractData)
+						.catch(this.handleError);
 	}
 
 	private extractData(response: Response)

@@ -9,7 +9,7 @@ import { Config } from '../config';
 
 @Component({
 	selector: 'home',
-	templateUrl: 'app/templates/home.component.html',
+	templateUrl: 'app/templates/home.component.html?v=' + Config.APP_VERSION,
 	providers: [JournalService, GithubService]
 })
 export class HomeComponent implements OnInit

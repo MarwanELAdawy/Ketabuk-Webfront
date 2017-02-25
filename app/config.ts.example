@@ -7,6 +7,7 @@ export class Config
 	public static get GITHUB_API_FRONT_URL(): string { return ""; }
 	public static get GITHUB_API_BACK_URL(): string { return ""; }
 	public static get MILESTONE_NAME(): string { return ""; }
+	public static get APP_VERSION(): string { return "1.0"; }
 	
 	public static get ALL_FIELDS(): string[]
 	{

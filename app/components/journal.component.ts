@@ -7,12 +7,13 @@ import { Post } from '../models/post';
 import { Journal } from '../models/journal';
 import { User } from '../models/user';
 import { SuperAuth } from '../supers/super-auth';
+import { Config } from '../config';
 
 declare var tinymce: any;
 
 @Component({
 	selector: 'my-journal',
-	templateUrl: 'app/templates/journal.component.html',
+	templateUrl: 'app/templates/journal.component.html?v=' + Config.APP_VERSION,
 	providers: [PostService, JournalService]
 })
 export class JournalComponent implements OnInit

@@ -9,7 +9,7 @@ import { SuperAuth } from '../supers/super-auth';
 @Component(
 	{
 		selector: 'my-login',
-		templateUrl: 'app/templates/login.component.html',
+		templateUrl: 'app/templates/login.component.html?v=' + Config.APP_VERSION,
 		providers: [LoginService]
 	}
 )

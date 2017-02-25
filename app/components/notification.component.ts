@@ -8,7 +8,7 @@ import '../rxjs-operators';
 
 @Component({
 	selector: 'my-notification',
-	templateUrl: 'app/templates/notification.component.html',
+	templateUrl: 'app/templates/notification.component.html?v=' + Config.APP_VERSION,
 	providers: [ SuperAuth, NotificationService ],
 })
 export class NotificationComponent implements OnInit

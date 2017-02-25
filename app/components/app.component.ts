@@ -8,7 +8,7 @@ import '../rxjs-operators';
 
 @Component({
 	selector: 'my-app',
-	templateUrl: 'app/templates/app.component.html',
+	templateUrl: 'app/templates/app.component.html?v=' + Config.APP_VERSION,
 	providers: [ SuperAuth ],
 })
 export class AppComponent implements OnInit

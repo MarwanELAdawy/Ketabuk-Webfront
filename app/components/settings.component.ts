@@ -4,10 +4,11 @@ import { JournalService } from '../services/journal.service';
 import { UserService } from '../services/user.service';
 import { Journal } from '../models/journal';
 import { User } from '../models/user';
+import { Config } from '../config';
 
 @Component({
 	selector: 'my-settings',
-	templateUrl: 'app/templates/settings.component.html',
+	templateUrl: 'app/templates/settings.component.html?v=' + Config.APP_VERSION,
 	providers: [JournalService, UserService ],
 })
 export class SettingsComponent implements OnInit
